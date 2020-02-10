@@ -3,21 +3,13 @@
     <h1>Create A Contact</h1>
     <form @submit.prevent="addPost">
       <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Contact Name:</label>
-            <input type="text" class="form-control" v-model="post.title">
-          </div>
-        </div>
-        </div>
-        <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Contact Number:</label>
-            <input type="text" class="form-control" v-model="post.number">
-          </div>
-        </div>
-        </div>
+        <b-field label="Contact Name">
+            <b-input v-model="post.title"></b-input>
+        </b-field>
+        <b-field label="Contact Number">
+            <b-input v-model="post.number"></b-input>
+        </b-field>
+      </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
