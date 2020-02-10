@@ -9,15 +9,11 @@
         <b-field label="Contact Number">
             <b-input v-model="post.number"></b-input>
         </b-field>
-      </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Contact Address:</label>
-              <textarea class="form-control" v-model="post.body" rows="5"></textarea>
-            </div>
-          </div>
-        </div><br />
+        <b-field label="Message">
+            <b-input v-model="post.body" maxlength="200" type="textarea"></b-input>
+        </b-field>
+        </div>
+        <br />
         <div class="form-group" id='app'>
           <b-button type="is-primary" @click="addPost()" >Click Me</b-button>
         </div>
