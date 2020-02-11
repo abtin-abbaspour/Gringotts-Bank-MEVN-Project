@@ -13,7 +13,7 @@
             <tr>
               <th>Name</th>
               <th>Number</th>
-              <th>Address</th>
+              <th>Message</th>
               <th>Actions</th>
             </tr>
             </thead>
@@ -21,7 +21,7 @@
                 <tr v-for="post in posts" :key="post._id">
                   <td>{{ post.title }}</td>
                   <td>{{ post.number }}</td>
-                  <td>{{ post.body }}</td>
+                  <td>{{ post.message }}</td>
                   <td><router-link :to="{name: 'edit', params: { id: post._id }}" class="btn btn-primary">Edit</router-link></td>
                   <td><button class="btn btn-danger" @click.prevent="deletePost(post._id)">Delete</button></td>
                 </tr>

@@ -10,7 +10,7 @@
             <b-input v-model="post.number"></b-input>
         </b-field>
         <b-field label="Message">
-            <b-input v-model="post.body" maxlength="200" type="textarea"></b-input>
+            <b-input v-model="post.message" maxlength="200" type="textarea"></b-input>
         </b-field>
         </div>
         <br />

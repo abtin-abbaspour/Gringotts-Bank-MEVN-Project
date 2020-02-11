@@ -9,7 +9,7 @@ let Post = new Schema({
   number: {
     type: String
   },
-  body: {
+  message: {
     type: String
   }
 },{

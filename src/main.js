@@ -4,6 +4,7 @@ import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
 Vue.use(Buefy);
 
+
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 

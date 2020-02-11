@@ -2,32 +2,20 @@
   <div>
     <h1>Edit Post</h1>
     <form @submit.prevent="updatePost">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Contact Name:</label>
-            <input type="text" class="form-control" v-model="post.title">
-          </div>
+<div class="row">
+        <b-field label="Contact Name">
+            <b-input v-model="post.title"></b-input>
+        </b-field>
+        <b-field label="Contact Number">
+            <b-input v-model="post.number"></b-input>
+        </b-field>
+        <b-field label="Message">
+            <b-input v-model="post.message" maxlength="200" type="textarea"></b-input>
+        </b-field>
         </div>
-        </div>
-        <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Contact Number:</label>
-            <input type="text" class="form-control" v-model="post.number">
-          </div>
-        </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Contact Address:</label>
-              <textarea class="form-control" v-model="post.body" rows="5"></textarea>
-            </div>
-          </div>
-        </div><br />
-        <div class="form-group">
-          <button class="btn btn-primary">Update</button>
+        <br />
+        <div class="form-group" id='app'>
+          <b-button type="is-primary" @click="updatePost()" >Click Me</b-button>
         </div>
     </form>
   </div>

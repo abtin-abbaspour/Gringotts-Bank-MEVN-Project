@@ -47,7 +47,7 @@ postRoutes.route('/update/:id').post(function (req, res) {
     else {
         post.title = req.body.title;
         post.number = req.body.number;
-        post.body = req.body.body;
+        post.message = req.body.message;
         post.save().then(() => {
           res.json('Update complete');
       })
