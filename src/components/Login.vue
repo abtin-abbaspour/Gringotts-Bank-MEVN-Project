@@ -1,14 +1,3 @@
-<!-- <template>
-  <p>Welcome to Capital Bank&copy; services.</p>
-  <h5>Username:</h5>
-  <h5>Password:</h5>
-  <p>Don't have an account? <a href="">Click here</a> to create a new account</p>
- </template> -->
- <script>
- export default {
- }
- </script>
-
  <template>
     <section>
       <b-message title="Welcome to Capital Bank Services" size="is-medium" type = "is-info">
@@ -24,8 +13,10 @@
                 password-reveal>
             </b-input>
         </b-field>
+        <b-button type="is-primary" @click="enterLogin"outlined>Login</b-button>
     </section>
 </template>
+<footer><p>Don't have an account? Click here to sign up.</p></footer>
 
 <script>
     export default {
@@ -33,6 +24,11 @@
             return {
                 name: 'John Silver'
             }
+        },
+        methods:{
+          enterLogin(){
+
+          }
         }
     }
 </script>
