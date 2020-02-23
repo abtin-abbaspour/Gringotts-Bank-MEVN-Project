@@ -15,55 +15,31 @@ Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
 
-import Login from './components/Login.vue';
-import HomePage from './components/HomePage.vue';
-import CreateAccount from './components/CreateAccount.vue';
-import EditAccount from './components/EditAccount.vue';
-import Deposit from './components/Deposit.vue';
-import Withdraw from './components/Withdraw.vue';
-import ETransfer from './components/ETransfer.vue';
-
-
-// import HomeComponent from './components/HomeComponent.vue';
-// import CreateComponent from './components/CreateComponent.vue';
-// import IndexComponent from './components/IndexComponent.vue';
-// import EditComponent from './components/EditComponent.vue';
+import HomeComponent from './components/HomeComponent.vue';
+import CreateComponent from './components/CreateComponent.vue';
+import IndexComponent from './components/IndexComponent.vue';
+import EditComponent from './components/EditComponent.vue';
 
 const routes = [
   {
-      name: 'login',
+      name: 'home',
       path: '/',
-      component: Login
+      component: HomeComponent
   },
   {
-      name: 'homePage',
-      path: '/homePage',
-      component: HomePage
+      name: 'create',
+      path: '/create',
+      component: CreateComponent
   },
   {
-      name: 'createAccount',
-      path: '/createAccount',
-      component: CreateAccount
+      name: 'posts',
+      path: '/posts',
+      component: IndexComponent
   },
   {
-    name: 'editAccount',
-    path: '/editAccount',
-    component: EditAccount
-  },
-  {
-      name: 'deposit',
-      path: '/deposit',
-      component: Deposit
-  },
-  {
-    name: 'withdraw',
-    path: '/withdraw',
-    component: Withdraw
-  },
-  {
-      name: 'eTransfer',
-      path: '/eTransfer',
-      component: ETransfer
+      name: 'edit',
+      path: '/edit/:id',
+      component: EditComponent
   }
 ];
 
