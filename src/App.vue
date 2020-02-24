@@ -3,7 +3,7 @@
         <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">
                 <img
-                    src="../dist/img/logo.PNG"
+                    src="assets/logo.PNG"
                     alt="Image cannot be displayed"
                 >
             </b-navbar-item>
@@ -50,5 +50,14 @@
 <script>
 
     export default{
+      methods: {
+      deleteAccount()
+      {
+        let uri = `http://localhost:4000/posts/delete`;
+        this.axios.delete(uri).then(response => {
+          this.accounts = response.data;
+        });
+      }
+    }
     }
 </script>

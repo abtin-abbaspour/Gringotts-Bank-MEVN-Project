@@ -25,6 +25,9 @@ let Account = new Schema({
   password: {
     type: String
   },
+  balance:{
+    type: Number
+  },
   transactions: [Transaction]  
 },{
     collection: 'accounts'

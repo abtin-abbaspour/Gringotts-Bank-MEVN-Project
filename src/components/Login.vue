@@ -9,11 +9,11 @@
         </b-field>
 
         <b-field label="Password">
-            <b-input type="password" minlength = "5" maxlength = "15" placeholder = "Password" icon = "key"
+            <b-input v-model=""type="password" minlength = "5" maxlength = "15" placeholder = "Password" icon = "key"
                 password-reveal>
             </b-input>
         </b-field>
-        <b-button type="is-primary" @click="enterLogin"outlined>Login</b-button>
+        <b-button type="is-primary" @click.prevent="enterLogin"outlined>Login</b-button>
     </section>
 </template>
 <footer><p>Don't have an account? Click here to sign up.</p></footer>
@@ -22,12 +22,15 @@
     export default {
         data() {
             return {
-                name: 'John Silver'
+              account:{}
             }
         },
         methods:{
           enterLogin(){
-
+            let uri = `http://localhost:4000/posts/authenticate/${this.$route.params.id}`;
+            this.axios.post(uri, this.post).then(() => {
+            this.$router.push({name: 'homePage'});
+          });
           }
         }
     }

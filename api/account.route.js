@@ -5,7 +5,7 @@ const accountRoutes = express.Router();
 let Account = require('./account.model');
 
 // Defined store route
-accountRoutes.route('/add').account(function (req, res) {
+accountRoutes.route('/add').post(function (req, res) {
   let account = new Account(req.body);
   account.save()
     .then(() => {
@@ -40,13 +40,14 @@ accountRoutes.route('/edit/:id').get(function (req, res) {
 });
 
 //  Defined update route
-accountRoutes.route('/update/:id').account(function (req, res) {
+accountRoutes.route('/update/:id').post(function (req, res) {
     Account.findById(req.params.id, function(err, account) {
     if (!account)
       res.status(404).send("data is not found");
     else {
         account.username = req.body.username;
         account.password = req.body.password;
+        account.balance = req.body.balance;
         account.transactions = req.body.transactions;
         account.save().then(() => {
           res.json('Update complete');
@@ -59,7 +60,7 @@ accountRoutes.route('/update/:id').account(function (req, res) {
 });
 
 // Defined delete | remove | destroy route
-accountRoutes.route('/delete/:id').delete(function (req, res) {
+accountRoutes.route('/delete').delete(function (req, res) {
     Account.findByIdAndRemove({_id: req.params.id}, function(err){
         if(err) res.json(err);
         else {
