@@ -76,4 +76,22 @@ accountRoutes.route('/delete').delete(function (req, res) {
     });
 });
 
+accountRoutes.route('/authenticate').post(function (req, res) {
+  let account = new Account(req.body);
+
+  Account.find({ $and: [ { username: { $eq: account.username } }, { password: { $eq: account.password } } ] }, function(err, account) {
+      console.log(account);
+
+     if(err){
+                res.json(err);
+              }
+              else {
+                if (account.length > 1) account = account[0];
+                res.json(account);
+              }
+  })
+        
+      
+});
+
 module.exports = accountRoutes;

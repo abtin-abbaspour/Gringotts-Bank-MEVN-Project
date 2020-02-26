@@ -21,13 +21,30 @@
                 </div>
             </div>
         </b-collapse>
+        <section>
+        	<b-button type="is-primary" @click.prevent="withdraw()"outlined>Withdraw</b-button>
+        	<b-button type="is-primary" @click.prevent="deposit()"outlined>Deposit</b-button>
+        	<b-button type="is-primary" @click.prevent="eTransfer()"outlined>E-Transfer</b-button>
+        </section>
 </template>
 <script>
 export default {
       data() {
         return {
-          account: {}
+          account: this.$route.params.account
         }
+      },
+      methods:{
+      	withdraw(){
+      		this.$router.push({name: 'withdraw'}, params: { account });
+      	},
+      	deposit(){
+      		this.$router.push({name: 'deposit'}, params: { account });
+      	},
+      	eTransfer(){
+      		this.$router.push({name: 'eTransfer'}, params: { account });
+
+      	}
       }
     }
 </script>
