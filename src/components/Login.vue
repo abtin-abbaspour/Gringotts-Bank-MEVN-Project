@@ -27,12 +27,12 @@
         methods:{
           enterLogin(){
             let uri = 'http://localhost:4000/posts/authenticate';
-            this.axios.post(uri, this.account).then(() => {
+            this.axios.post(uri, this.account).then((response) => {
               this.account = response.account;
               this.$buefy.toast.open({
                     message: 'Login success!',
                     type: 'is-success'
-                })
+                });
             this.$router.push({name: 'homePage'}, params: { account });
           }).catch((error) => {
             this.$buefy.toast.open({

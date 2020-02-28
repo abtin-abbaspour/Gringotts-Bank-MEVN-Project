@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <b-navbar>
         <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">
@@ -60,4 +60,4 @@
       }
     }
     }
-</script>
+</script> -->

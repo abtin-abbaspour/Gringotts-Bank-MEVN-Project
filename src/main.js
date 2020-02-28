@@ -37,7 +37,7 @@ const routes = [
   },
   {
       name: 'homePage',
-      path: '/homePage',
+      path: '/homePage/:id',
       component: HomePage
   },
   {
@@ -47,22 +47,22 @@ const routes = [
   },
   {
     name: 'editAccount',
-    path: '/editAccount',
+    path: '/editAccount/:id',
     component: EditAccount
   },
   {
       name: 'deposit',
-      path: '/deposit',
+      path: '/deposit/:id',
       component: Deposit
   },
   {
     name: 'withdraw',
-    path: '/withdraw',
+    path: '/withdraw/:id',
     component: Withdraw
   },
   {
       name: 'eTransfer',
-      path: '/eTransfer',
+      path: '/eTransfer/:id',
       component: ETransfer
   }
 ];
