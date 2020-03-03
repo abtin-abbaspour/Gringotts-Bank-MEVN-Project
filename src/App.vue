@@ -42,6 +42,7 @@
         </template>
     </b-navbar>
 </template>
+<template>
 
 <style>
    
@@ -61,3 +62,9 @@
     }
     }
 </script> -->
+
+<template>
+</template>
+<script>
+  export default{}
+</script>

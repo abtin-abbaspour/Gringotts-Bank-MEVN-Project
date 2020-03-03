@@ -22,7 +22,7 @@
                   <td>{{ post.title }}</td>
                   <td>{{ post.number }}</td>
                   <td>{{ post.message }}</td>
-                  <td><router-link :to="{name: 'edit', params: { id: post._id }}" class="btn btn-primary">Edit</router-link></td>
+                  <td><router-link :to="{name: 'edit', params: { id: post._id }//}" class="btn btn-primary">Edit</router-link></td>
                   <td><button class="btn btn-danger" @click.prevent="deletePost(post._id)">Delete</button></td>
                 </tr>
             </tbody>

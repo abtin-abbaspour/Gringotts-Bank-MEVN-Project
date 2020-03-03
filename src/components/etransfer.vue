@@ -23,17 +23,18 @@
         </b-collapse>
     </section>
 </template>
- <script>
- export default {
-      data() {
-        return {
-          account: {}
-        }
-       }, created(){
-          let uri = `http://localhost:4000/posts/find/${this.$route.params.id}`;
-          this.axios.get(uri).then((response) => {
-            this.account = response.data;
-        });
-       }
+<script>
+export default {
+  data() {
+    return {
+      account: {}
     }
- </script>
+  }, 
+  created(){
+    let uri = `http://localhost:4000/posts/find/${this.$route.params.id}`;
+    this.axios.get(uri).then((response) => {
+      this.account = response.data;
+    });
+  }
+}
+</script>
