@@ -1,7 +1,7 @@
-<!-- <template>
+<template>
     <b-navbar>
         <template slot="brand">
-            <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">
+            <b-navbar-item href = "/"><!--homepage-->
                 <img
                     src="assets/logo.PNG"
                     alt="Image cannot be displayed"
@@ -9,20 +9,20 @@
             </b-navbar-item>
         </template>
         <template slot="start">
-            <b-navbar-item tag ="router-link" :to="/homepage">
+            <b-navbar-item href = "/"><!--homepage-->
                 Home
             </b-navbar-item>
-            <b-navbar-item href="/editAccount">
+            <b-navbar-item href="/createAccount"><!--editAccount-->
                 Edit Profile
             </b-navbar-item>
             <b-navbar-dropdown label="Actions">
-                <b-navbar-item tag ="router-link" :to="/deposit">
+                <b-navbar-item href = "/"><!--deposit-->
                     Deposit
                 </b-navbar-item>
-                <b-navbar-item tag ="router-link" :to="/withdraw">
+                <b-navbar-item href = "/"><!--withdraw-->
                     Withdraw
                 </b-navbar-item>
-                <b-navbar-item tag ="router-link" :to="/eTransfer">
+                <b-navbar-item href = "/createAccount"><!--eTransfer-->
                     E-Transfer
                 </b-navbar-item>
             </b-navbar-dropdown>
@@ -31,10 +31,10 @@
         <template slot="end">
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <a class="button is-primary" tag = "router-link" :to="/">
+                    <a class="button is-primary" href = "/"><!--login-->
                         <strong>Log out</strong>
                     </a>
-                    <a class="button is-danger" tag = "router-link" :to="/">
+                    <a class="button is-danger" href = "/"><!--login-->
                         Delete Account
                     </a>
                 </div>
@@ -42,29 +42,33 @@
         </template>
     </b-navbar>
 </template>
-<template>
-
 <style>
    
 </style>
 
 <script>
 
-    export default{
-      methods: {
-      deleteAccount()
-      {
-        let uri = `http://localhost:4000/posts/delete`;
-        this.axios.delete(uri).then(response => {
-          this.accounts = response.data;
-        });
-      }
+export default{
+    name: 'app',
+    methods: {
+        deleteAccount() {
+            let uri = `http://localhost:4000/accounts/delete`;
+            this.axios.delete(uri).then(response => {
+                this.accounts = response.data;
+            });
+        }
     }
-    }
-</script> -->
+}
+</script>
 
-<template>
+<!-- <template>
+    <section>
+    <p>Hello</p>
+    <p>Yo it's actually working epic</p>
+    </section>
 </template>
 <script>
   export default{}
-</script>
+</script> -->
+
+<!--FIND METHOD--> 

@@ -31,7 +31,7 @@ export default {
     }
   }, 
   created(){
-    let uri = `http://localhost:4000/posts/find/${this.$route.params.id}`;
+    let uri = `http://localhost:4000/accounts/edit/${this.$route.params.id}`;
     this.axios.get(uri).then((response) => {
       this.account = response.data;
     });

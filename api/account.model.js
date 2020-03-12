@@ -2,20 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //schema for a transaction
-let Transaction = new Schema({
-  transactionType: {
-    type: String
-  },
-  moneyIn: {
-    type: Boolean
-  },
-  amount: {
-    type: Number
-  },
-  date: {
-    type: Date
-  } 
-})
+// let Transaction = new Schema({
+//   transactionType: {
+//     type: String
+//   },
+//   moneyIn: {
+//     type: Boolean
+//   },
+//   amount: {
+//     type: Number
+//   },
+//   date: {
+//     type: Date
+//   } 
+// });
 
 // Define collection and schema for Account
 let Account = new Schema({
@@ -27,12 +27,14 @@ let Account = new Schema({
   },
   balance:{
     type: Number
-  },
-  transactions: [Transaction]  
+  }
 },{
-    collection: 'accounts'
+  collection: 'accounts'
 });
 
 module.exports = mongoose.model('Account', Account);
 
 
+//   },
+//   transactions: [Transaction]  
+// ,{

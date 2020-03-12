@@ -19,18 +19,18 @@ accountRoutes.route('/add').post(function(req, res) {
 });
 
 // Defined get data(index or listing) route
-accountRoutes.route('/').get(function(req, res) {
-    Account.find(function(err, posts) {
-        if (err) {
-            res.json(err);
-        } else {
-            res.json(accounts);
-        }
-    });
-});
+// accountRoutes.route('/').get(function(req, res) {
+//     Account.find(function(err, accounts) {
+//         if (err) {
+//             res.json(err);
+//         } else {
+//             res.json(accounts);
+//         }
+//     });
+// });
 
 // Defined edit route
-accountRoutes.route('/find/:id').get(function(req, res) {
+accountRoutes.route('/edit/:id').get(function(req, res) {
     let id = req.params.id;
     Account.findById(id, function(err, account) {
         if (err) {

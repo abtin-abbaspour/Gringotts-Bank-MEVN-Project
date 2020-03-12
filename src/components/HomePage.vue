@@ -28,7 +28,7 @@ export default {
           account: {}
         }
        }, created(){
-			let uri = `http://localhost:4000/posts/find/${this.$route.params.id}`;
+			let uri = `http://localhost:4000/accounts/edit/${this.$route.params.id}`;
 			this.axios.get(uri).then((response) => {
 			this.account = response.data;
         });
@@ -47,7 +47,7 @@ export default {
 			this.$router.push({name: 'homePage'});
 		},
 		deleteAccount(){
-			let uri = `http://localhost:4000/posts/delete/${this.$route.params.id}`;
+			let uri = `http://localhost:4000/accounts/delete/${this.$route.params.id}`;
 			this.axios.delete(uri, this.account).then(() => {
 				this.$router.push({name: 'login'});
 			});

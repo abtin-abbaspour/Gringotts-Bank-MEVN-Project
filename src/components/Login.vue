@@ -23,7 +23,7 @@ export default {
   },
   methods:{
     enterLogin(){
-      let uri = 'http://localhost:4000/posts/authenticate';
+      let uri = 'http://localhost:4000/accounts/authenticate';
       this.axios.post(uri, this.account).then((response) => {
         this.account = response.account;
         this.$buefy.toast.open({
