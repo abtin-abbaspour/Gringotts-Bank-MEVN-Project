@@ -1,11 +1,11 @@
 <template>
-<div class="container">
-    <b-navbar class="is-twitter navbar">
+<div>
+    <b-navbar class="is-second navbar">
         <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
                 <img
-                    src="https://i.ibb.co/K9QbL4F/logo.png"
-                    width="200dx"
+                    src="https://i.ibb.co/B6fwcVd/gringotts.png"
+                    height="3rem"
                 >
             </b-navbar-item>
         </template>
@@ -54,10 +54,15 @@
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
-$primary: #126656;
+$primary: #8c67ef;
 $primary-invert: findColorInvert($primary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
+
+$first: #9a841c;
+$first-invert: findColorInvert($first);
+$second: #482e06;
+$second-invert: findColorInvert($second);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
@@ -70,7 +75,9 @@ $colors: (
     "success": ($success, $success-invert),
     "warning": ($warning, $warning-invert),
     "danger": ($danger, $danger-invert),
-    "twitter": ($twitter, $twitter-invert)
+    "twitter": ($twitter, $twitter-invert),
+    "first": ($first, $first-invert),
+    "second": ($second, $second-invert)
 );
 
 // Links
@@ -79,7 +86,7 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
 
-$navbar-item-img-max-height: 4rem !important;
+$navbar-item-img-max-height: 3rem !important;
 
 // Import Bulma and Buefy styles
 @import "~bulma";
