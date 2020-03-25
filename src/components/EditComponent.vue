@@ -15,7 +15,7 @@
         </div>
         <br />
         <div class="form-group" id='app'>
-          <b-button type="is-primary" @click="updatePost()" >Click Me</b-button>
+          <b-button type="is-primary" @click="updatePost()" >Edit</b-button>
         </div>
     </form>
   </div>
