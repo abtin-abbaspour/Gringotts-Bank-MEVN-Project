@@ -19,10 +19,9 @@
       <template slot="end">
         <b-navbar-item tag="div">
           <div class="buttons">
-            <a class="button is-primary">
+            <a class="is-first button">
               <strong>Sign up</strong>
             </a>
-            <a class="dark button is-light">Log in</a>
           </div>
         </b-navbar-item>
       </template>
@@ -48,6 +47,8 @@ $first: #9a841c;
 $first-invert: findColorInvert($first);
 $second: #482e06;
 $second-invert: findColorInvert($second);
+$third: #f7e79c;
+$third-invert: findColorInvert($third);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
@@ -62,7 +63,8 @@ $colors: (
   "danger": ($danger, $danger-invert),
   "twitter": ($twitter, $twitter-invert),
   "first": ($first, $first-invert),
-  "second": ($second, $second-invert)
+  "second": ($second, $second-invert),
+  "third": ($third, $third-invert)
 );
 
 // Links

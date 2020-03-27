@@ -1,22 +1,25 @@
 <template>
-  
-          <div>
-              <div class="card-header">Home Component</div>
+    <section>
+        <button class="button is-primary is-medium"
+            @click="isImageModalActive = true">
+            Launch image modal
+        </button>
 
-              <div class="card-body">
-                  I'm the Home Component component.
-              </div>
-              <b-modal :active.sync="isComponentModalActive"
-                 has-modal-card
-                 trap-focus
-                 aria-role="dialog"
-                 aria-modal>
-            <modal-form v-bind="formProps"></modal-form>
+        <b-modal :active.sync="isImageModalActive">
+            <p class="image is-4by3">
+                <img src="https://i.ibb.co/VDMBNHb/welcome-gringotts.png">
+            </p>
         </b-modal>
-          </div>
-      
- </template>
- <script>
- export default {
- }
- </script>
+    </section>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                isImageModalActive: false,
+                isCardModalActive: false
+            }
+        }
+    }
+</script>
