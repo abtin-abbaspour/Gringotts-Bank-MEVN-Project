@@ -11,8 +11,8 @@
         <b-navbar-item tag="router-link" :to="{ path: '/create' }">Create</b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">Posts</b-navbar-item>
         <b-navbar-dropdown label="Actions" >
+          <b-navbar-item tag="router-link" :to="{ path: '/deposit' }" class="is-first navbar">Deposit</b-navbar-item>
           <b-navbar-item href="#" class="is-first navbar">Withdraw</b-navbar-item>
-          <b-navbar-item href="#" class="is-first navbar">Deposit</b-navbar-item>
           <b-navbar-item href="#" class="is-first navbar">E-Transfer</b-navbar-item>
         </b-navbar-dropdown>
       </template>
@@ -20,8 +20,8 @@
       <template slot="end">
         <b-navbar-item tag="div">
           <div class="buttons">
-            <a class="is-first button">
-              <strong>Reset Balance</strong>
+            <a class="is-first button" @click.prevent="reset()">
+              <strong>Reset Account</strong>
             </a>
           </div>
         </b-navbar-item>
@@ -93,5 +93,31 @@ body {
 </style>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            posts: []
+        }
+       }, created(){
+            let uri = 'http://localhost:4000/posts';
+            this.axios.get(uri).then(response => {
+                this.posts = response.data;
+            });
+      },
+    methods: {
+        reset(){
+            for(var p of this.posts){
+                let uri = `http://localhost:4000/posts/delete/`+p._id;
+                this.axios.delete(uri).then(response => {
+                this.posts = response.data;
+                });
+            }
+            console.log("successfully reset account");
+        }
+    }
+};
+
+
+
+
 </script>

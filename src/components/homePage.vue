@@ -25,18 +25,18 @@
 		<table class="table table-hover">
             <thead>
             <tr>
-              <th>Name</th>
-              <th>Number</th>
-              <th>Message</th>
+              <th>Transaction Type</th>
+              <th>Amount</th>
+              <th>Date</th>
               <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-                <tr v-for="post in posts" :key="post._id">
-                  <td>{{ post.title }}</td>
-                  <td>{{ post.number }}</td>
-                  <td>{{ post.message }}</td>
-                  <td><router-link :to="{name: 'edit', params: { id: post._id }}" class="btn btn-primary">View Details</router-link></td>
+                <tr v-for="post in posts.slice().reverse()" :key="post._id">
+                  <td>{{ post.transactionType }}</td>
+                  <td>{{ post.amount }}</td>
+                  <td>{{ post.date }}</td>
+                  <td><router-link :to="{name: 'viewer', params: { id: post._id }}" class="btn btn-primary">View Details</router-link></td>
                 </tr>
             </tbody>
         </table>
