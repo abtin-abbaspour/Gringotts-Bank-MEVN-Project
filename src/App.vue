@@ -7,12 +7,13 @@
         </b-navbar-item>
       </template>
       <template slot="start">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">Home</b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">Welcome</b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/create' }">Create</b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/posts' }">Posts</b-navbar-item>
-        <b-navbar-dropdown label="Info" >
-          <b-navbar-item href="#" class="is-first navbar">About</b-navbar-item>
-          <b-navbar-item href="#" class="is-first navbar">Contact</b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">Posts</b-navbar-item>
+        <b-navbar-dropdown label="Actions" >
+          <b-navbar-item href="#" class="is-first navbar">Withdraw</b-navbar-item>
+          <b-navbar-item href="#" class="is-first navbar">Deposit</b-navbar-item>
+          <b-navbar-item href="#" class="is-first navbar">E-Transfer</b-navbar-item>
         </b-navbar-dropdown>
       </template>
 
@@ -20,7 +21,7 @@
         <b-navbar-item tag="div">
           <div class="buttons">
             <a class="is-first button">
-              <strong>Sign up</strong>
+              <strong>Reset Balance</strong>
             </a>
           </div>
         </b-navbar-item>
