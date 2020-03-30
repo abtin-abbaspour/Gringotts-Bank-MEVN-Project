@@ -80,7 +80,10 @@ $navbar-item-img-max-height: 3rem !important;
 @import "~buefy/src/scss/buefy";
 
 // Classes
-.navbar {
+.container {
+  margin-left: 100px;
+  background-color: #f7e79c;
+  text-align: center;
 }
 
 body {

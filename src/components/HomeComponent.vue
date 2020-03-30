@@ -10,6 +10,11 @@
                 <img src="https://i.ibb.co/VDMBNHb/welcome-gringotts.png">
             </p>
         </b-modal>
+
+        <div class="container">
+            <p>Hi</p>
+        </div>
+
     </section>
 </template>
 
@@ -17,8 +22,7 @@
     export default {
         data() {
             return {
-                isImageModalActive: false,
-                isCardModalActive: false
+                isImageModalActive: false
             }
         }
     }
