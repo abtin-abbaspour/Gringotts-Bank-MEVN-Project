@@ -7,20 +7,21 @@
         </b-navbar-item>
       </template>
       <template slot="start">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">Home</b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/create' }">Create</b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/posts' }">Posts</b-navbar-item>
-        <b-navbar-dropdown label="Info" >
-          <b-navbar-item href="#" class="is-first navbar">About</b-navbar-item>
-          <b-navbar-item href="#" class="is-first navbar">Contact</b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">Welcome</b-navbar-item>
+<!--         <b-navbar-item tag="router-link" :to="{ path: '/create' }">Create</b-navbar-item>
+ -->        <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">Home</b-navbar-item>
+        <b-navbar-dropdown label="Actions" >
+          <b-navbar-item tag="router-link" :to="{ path: '/deposit' }" class="is-first navbar">Deposit</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/withdraw' }" class="is-first navbar">Withdraw</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/eTransfer' }" class="is-first navbar">E-Transfer</b-navbar-item>
         </b-navbar-dropdown>
       </template>
 
       <template slot="end">
         <b-navbar-item tag="div">
           <div class="buttons">
-            <a class="is-first button">
-              <strong>Sign up</strong>
+            <a class="is-first button" @click.prevent="reset()">
+              <strong>Reset Account</strong>
             </a>
           </div>
         </b-navbar-item>
@@ -107,5 +108,37 @@ body {
 </style>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            posts: []
+        }
+       }, created(){
+            let uri = 'http://localhost:4000/posts';
+            this.axios.get(uri).then(response => {
+                this.posts = response.data;
+            });
+      },
+    methods: {
+        reset(){
+            for(var p of this.posts){
+                let uri = `http://localhost:4000/posts/delete/`+p._id;
+                this.axios.delete(uri).then(response => {
+                this.posts = response.data;
+                });
+            }
+            this.$buefy.snackbar.open({
+                message: `Press reset once more to complete the action.`,
+                position: 'is-top'
+            })
+            console.log("successfully reset account");
+             location.reload();
+
+        }
+    }
+};
+
+
+
+
 </script>
