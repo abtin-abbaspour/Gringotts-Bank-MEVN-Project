@@ -81,9 +81,15 @@ $navbar-item-img-max-height: 3rem !important;
 
 // Classes
 .container {
-  margin-left: 100px;
-  background-color: #f7e79c;
-  text-align: center;
+  padding: 50px;
+  background-color: #9a841c;
+  border-radius: 25px;
+}
+
+.home-header {
+  color: white;
+  font-size: 40px;
+  font-weight: 1000;
 }
 
 body {

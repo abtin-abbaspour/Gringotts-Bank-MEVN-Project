@@ -1,10 +1,5 @@
 <template>
     <section>
-        <button class="button is-primary is-medium"
-            @click="isImageModalActive = true">
-            Launch image modal
-        </button>
-
         <b-modal :active.sync="isImageModalActive">
             <p class="image is-4by3">
                 <img src="https://i.ibb.co/VDMBNHb/welcome-gringotts.png">
@@ -12,7 +7,7 @@
         </b-modal>
 
         <div class="container">
-            <p>Hi</p>
+            <h1 class="home-header">My Account</h1>
         </div>
 
     </section>
@@ -22,7 +17,7 @@
     export default {
         data() {
             return {
-                isImageModalActive: false
+                isImageModalActive: true
             }
         }
     }
