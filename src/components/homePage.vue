@@ -11,7 +11,7 @@
 			</div>
 			<div class="card-content">
 				<div class="content">
-					<p>Balance goes here</p>
+					<p>${{balance}}</p>
 				</div>
 			</div>
 		</b-collapse>
@@ -34,7 +34,7 @@
             <tbody>
                 <tr v-for="post in posts.slice().reverse()" :key="post._id">
                   <td>{{ post.transactionType }}</td>
-                  <td>{{ post.amount }}</td>
+                  <td>${{ post.amount}}</td>
                   <td>{{ post.date }}</td>
                   <td><router-link :to="{name: 'viewer', params: { id: post._id }}" class="btn btn-primary">View Details</router-link></td>
                 </tr>
@@ -48,7 +48,8 @@
 export default {
       data() {
         return {
-        	posts: []
+        	posts: [],
+        	balance: 0
         }
        }, created(){
        		let uri = 'http://localhost:4000/posts';
@@ -56,22 +57,46 @@ export default {
         		this.posts = response.data;
       		});
 
+      		if(this.posts.length > 0)
+      			this.balance = parseInt(this.posts[this.posts.length-1].balanceAfter);
+      		else
+      			this.balance = 0;
+
+      		// for(var post of this.posts){
+      		// 	this.balance = post.balanceAfter;
+      		// 	console.log(post.balanceAfter);
+      		// }
+      		// console.log(this.balance);
+
 			// let uri = `http://localhost:4000/accounts/edit/${this.$route.params.id}`;
 			// this.axios.get(uri).then((response) => {
 			// this.account = response.data;
         // });
-      },
+      // }, mounted(){
+      // 	for(var post of this.posts){
+      // 			this.balance = post.balanceAfter;
+      // 			console.log(post.balanceAfter);
+      // 		}
+      // 		console.log(this.balance);
+      	},
+      // mounted(){
+      // 	if(this.posts.length > 0)
+      // 			this.balance = this.posts[this.posts.length-1].balanceAfter;
+      // 		else
+      // 			console.log("No items");
+      // 	console.log(this.posts[0].balanceAfter);
+      // },
       methods:{
 		withdraw(){
-			//this.$router.push({name: 'withdraw', params: { id: this.account._id }});
+			this.$router.push({name: 'withdraw'});
 		},
 		deposit(){
-			//this.$router.push({name: 'deposit', params: { id: this.account._id }});
+			this.$router.push({name: 'deposit'});
 		},
 		eTransfer(){
-			//this.$router.push({name: 'eTransfer', params: { id: this.account._id }});
-		},
-		logout(){
+			this.$router.push({name: 'eTransfer'});
+		// },
+		// logout(){
 			//this.$router.push({name: 'homePage'});
 		}
       }

@@ -9,7 +9,7 @@
             </b-select>
             <b-input v-model = "post.amount" type="number" placeholder="0.00" min = "0.00"></b-input>
             <p class="control">
-                <button class="button is-success" @click="deposit()">Deposit</button>
+                <button class="button is-success" @click.prevent="deposit()">Deposit</button>
             </p>
         </b-field>
         </div>
@@ -35,12 +35,13 @@
     methods: {
       deposit(){
         if(this.posts.length === 0)
-          this.post.balanceAfter = this.post.amount;
+          this.post.balanceAfter = parseInt(this.post.amount);
         else
-          this.post.balanceAfter = this.posts[this.posts.length-1].balanceAfter + this.post.amount;
+          this.post.balanceAfter = parseInt(this.posts[this.posts.length-1].balanceAfter) + parseInt(this.post.amount);
         let uri = 'http://localhost:4000/posts/add';
         this.axios.post(uri, this.post).then(() => {
           this.$router.push({name: 'homePage'});
+          console.log("successful transaction");
         });
       }
     }

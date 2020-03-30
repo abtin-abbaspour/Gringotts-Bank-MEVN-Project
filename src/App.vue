@@ -8,12 +8,12 @@
       </template>
       <template slot="start">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">Welcome</b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/create' }">Create</b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">Posts</b-navbar-item>
+<!--         <b-navbar-item tag="router-link" :to="{ path: '/create' }">Create</b-navbar-item>
+ -->        <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">Home</b-navbar-item>
         <b-navbar-dropdown label="Actions" >
           <b-navbar-item tag="router-link" :to="{ path: '/deposit' }" class="is-first navbar">Deposit</b-navbar-item>
-          <b-navbar-item href="#" class="is-first navbar">Withdraw</b-navbar-item>
-          <b-navbar-item href="#" class="is-first navbar">E-Transfer</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/withdraw' }" class="is-first navbar">Withdraw</b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/eTransfer' }" class="is-first navbar">E-Transfer</b-navbar-item>
         </b-navbar-dropdown>
       </template>
 
@@ -112,7 +112,13 @@ export default {
                 this.posts = response.data;
                 });
             }
+            this.$buefy.snackbar.open({
+                message: `Press reset once more to complete the action.`,
+                position: 'is-top'
+            })
             console.log("successfully reset account");
+             location.reload();
+
         }
     }
 };

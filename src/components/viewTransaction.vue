@@ -10,7 +10,7 @@
 <div class = "columns">
   <div class = "column">
    <b-message title="Transaction Type" type="is-danger">
-            This transaction was a {{post.transactionType}}. <p v-if = 'post.transactionType === eTransfer'>This eTransfer was to {{post.eTransferTo}}.</p>
+            This transaction was a {{post.transactionType}}. <div v-if = 'post.eTransferTo !== ""'>This eTransfer was to {{post.eTransferTo}}.</div>
     </b-message>
   </div>
     <div class = "column">
@@ -25,7 +25,7 @@
   </div>
   <div class = "column">
    <b-message title="Balance Remaining" type="is-info">
-            Following this transaction, you had {{post.balanceAfter}} in your bank account.
+            Following this transaction, you had ${{post.balanceAfter}} in your bank account.
     </b-message> 
   </div>
   </div>
