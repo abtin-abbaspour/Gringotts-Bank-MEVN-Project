@@ -1,5 +1,10 @@
 <template>
   <div id = "all">
+    <b-modal :active.sync="isImageModalActive">
+            <p class="image is-4by3">
+                <img src="https://i.ibb.co/VDMBNHb/welcome-gringotts.png">
+            </p>
+        </b-modal>
       <section>
         <div id = "carousel">
     <b-carousel :arrow = true :arrowBoth = true :autoplay = true :interval = "2500">
@@ -60,27 +65,12 @@
 </div>
 </div>
 </template>
-<!-- <template>
-    <section>
-        <button class="button is-primary is-medium"
-            @click="isImageModalActive = true">
-            Launch image modal
-        </button>
-
-        <b-modal :active.sync="isImageModalActive">
-            <p class="image is-4by3">
-                <img src="https://i.ibb.co/VDMBNHb/welcome-gringotts.png">
-            </p>
-        </b-modal>
-    </section>
-</template> -->
 
 <script>
     export default {
         data() {
             return {
-                // isImageModalActive: false,
-                // isCardModalActive: false,
+                isImageModalActive: true,
                 carousels: [
                 { text: 'Welcome to Gringotts Banking Corporation!', color: 'primary' },
                 { text: 'Press "Home" to view your balance and previous transactions.', color: 'info' },
