@@ -7,7 +7,10 @@
         </b-modal>
 
         <div class="container">
-            <h1 class="home-header">My Account</h1>
+            <h1 class="home-header">My Account</h1><br><br>
+            <h1 class="home-second">Balance</h1>
+            <p>BALANCE</p>
+
         </div>
 
     </section>

@@ -92,6 +92,12 @@ $navbar-item-img-max-height: 3rem !important;
   font-weight: 1000;
 }
 
+.home-second {
+  color: white;
+  font-size: 30px;
+  font-weight: 1000;
+}
+
 body {
   background-color: #f7e79c;
   background-size: cover;
