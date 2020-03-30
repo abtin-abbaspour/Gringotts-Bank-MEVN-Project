@@ -16,9 +16,7 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 import Welcome from './components/Welcome.vue';
-import CreateComponent from './components/CreateComponent.vue';
 import HomePage from './components/homePage.vue';
-import EditComponent from './components/EditComponent.vue';
 import Viewer from './components/viewTransaction.vue';
 import Deposit from './components/deposit.vue';
 import Withdraw from './components/withdraw.vue';
@@ -31,19 +29,9 @@ const routes = [
       component: Welcome
   },
   {
-      name: 'create',
-      path: '/create',
-      component: CreateComponent
-  },
-  {
       name: 'homePage',
       path: '/homePage',
       component: HomePage
-  },
-  {
-      name: 'edit',
-      path: '/edit/:id',
-      component: EditComponent
   },
   {
     name: 'viewer',
