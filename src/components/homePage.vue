@@ -10,8 +10,8 @@
 				</a>
 			</div>
 			<div class="card-content">
-				<div class="content">
-					<p>${{balance}}</p>
+				<div class="content" v-for="(post,index) in posts.slice().reverse()" :key="post._id" v-if="index===0">
+					<p>${{post.balanceAfter}}</p>
 				</div>
 			</div>
 		</b-collapse>
@@ -49,7 +49,6 @@ export default {
       data() {
         return {
         	posts: [],
-        	balance: 0
         }
        }, created(){
        		let uri = 'http://localhost:4000/posts';
@@ -57,10 +56,6 @@ export default {
         		this.posts = response.data;
       		});
 
-      		if(this.posts.length > 0)
-      			this.balance = parseInt(this.posts[this.posts.length-1].balanceAfter);
-      		else
-      			this.balance = 0;
 
       		// for(var post of this.posts){
       		// 	this.balance = post.balanceAfter;
