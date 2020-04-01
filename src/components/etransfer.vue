@@ -1,11 +1,23 @@
 <template>
   <div>
-    <h1>ETransfer Money</h1>
     <form>
       <div class="row">
+        <p class="title is-0.5" text-align = "middle">E-Transfer Money</p>
+        <p class="subtitle is-5">.Gringotts sends a notice to the email address you provide within 5 minutes.</p>
+        <p class="subtitle is-5">.Fees apply to sending an interac E-transfer transaction.</p>
+        <p class="subtitle is-5">.The transfer has to be more than 1$.</p>
+        <p class="subtitle is-5">.E-transfer transactions expire after 30 days.</p>
+        <p class="subtitle is-5">.If you want an interac E-transfer from one of your Gringott accounts, use another email.</p>
+        <p class="subtitle is-5">.Choose a forex currency that you wish to transfer. NOTE: Transaction may change depending on that currency you choose, this will appear on contacts account.</p>
+
         <b-field label = "ETransfer Amount:">
             <b-select placeholder="Currency">
                 <option>$CAD</option>
+                <option>$USD</option>
+                <option>$EURO</option>
+                <option>$AUD</option>
+                <option>$CHF</option>
+                <option>$GBP</option>
             </b-select>
             <b-input v-model = "post.amount" type="number" step = "0.01" placeholder="0.00" min = "0.01"></b-input>
             <b-input v-model = "post.eTransferTo" label = "E-Transfer to:" placeholder="FirstName LastName" minLength="2" icon="account">
