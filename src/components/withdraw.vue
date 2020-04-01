@@ -3,6 +3,7 @@
     <h1>Deposit Money</h1>
     <form>
       <div class="row">
+        
         <b-field label = "Withdraw Amount:">
             <b-select placeholder="Currency">
                 <option>$CAD</option>
