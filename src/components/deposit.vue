@@ -7,7 +7,7 @@
             <b-select placeholder="Currency">
                 <option>$CAD</option>
             </b-select>
-            <b-input v-model = "post.amount" type="number" placeholder="0.00" min = "0.00"></b-input>
+            <b-input v-model = "post.amount" type="number" step = "0.01" placeholder="0.00" min = "0.01"></b-input>
             <p class="control">
                 <button class="button is-success" @click.prevent="deposit()">Deposit</button>
             </p>
@@ -34,10 +34,11 @@
     },
     methods: {
       deposit(){
+        this.post.amount = parseFloat(this.post.amount).toFixed(2);
         if(this.posts.length === 0)
-          this.post.balanceAfter = parseInt(this.post.amount);
+          this.post.balanceAfter = parseFloat(this.post.amount).toFixed(2);
         else
-          this.post.balanceAfter = parseInt(this.posts[this.posts.length-1].balanceAfter) + parseInt(this.post.amount);
+          this.post.balanceAfter = (parseFloat(this.posts[this.posts.length-1].balanceAfter) + parseFloat(this.post.amount)).toFixed(2);
         let uri = 'http://localhost:4000/posts/add';
         this.axios.post(uri, this.post).then(() => {
           this.$router.push({name: 'homePage'});

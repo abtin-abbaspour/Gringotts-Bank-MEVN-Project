@@ -49,13 +49,13 @@ export default {
       data() {
         return {
         	posts: [],
+        	balance: 0
         }
        }, created(){
        		let uri = 'http://localhost:4000/posts';
       		this.axios.get(uri).then(response => {
         		this.posts = response.data;
       		});
-
 
       		// for(var post of this.posts){
       		// 	this.balance = post.balanceAfter;

@@ -46,7 +46,7 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Post
 let Post = new Schema({
   amount: {
-    type: Number
+    type: String
   },
   transactionType: {
     type: String
@@ -58,7 +58,7 @@ let Post = new Schema({
     type: String
   },
   balanceAfter:{
-    type: Number
+    type: String
   }
 },{
     collection: 'posts'
