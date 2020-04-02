@@ -1,21 +1,38 @@
 <template>
   <div>
-    <h1>Deposit Money</h1>
+  <p class="title is-0.5" text-align = "middle">Withdraw Amount</p>
+
+  <b-message title="" type="is-warning" aria-close-label="Close message">
+      Currency will be dependent on what country you are in.
+           </b-message>
+
+        <b-message title="" type="is-warning" aria-close-label="Close message">
+        Choose how much you want to withdraw.
+        </b-message>
+
+      <b-message title="" type="is-warning" aria-close-label="Close message">
+        Withdrawl amount must be more than 10$.
+     </b-message>
+          <b-message title="" type="is-warning" aria-close-label="Close message">
+        Withdrawal will appear instanly in bank records.
+         </b-message>
     <form>
-      <div class="row">
-        
-        <b-field label = "Withdraw Amount:">
+      <div class="column">
+        <b-field label = "ETransfer Currency:">
             <b-select placeholder="Currency">
                 <option>$CAD</option>
             </b-select>
-            <b-input v-model = "post.amount" type="number" step = "0.01" placeholder="0.00" min = "0.01"></b-input>
-            <p class="control">
-                <button class="button is-success" @click.prevent="withdraw()">Withdraw</button>
-            </p>
-        </b-field>
+            </b-field>
         </div>
-        <br />
+        <br/>
     </form>
+    <b-field label = "Amount:">
+    <b-input v-model = "post.amount" type="number" placeholder="$" min = "10.00"></b-input>
+    </b-select>
+   </b-field>
+    <p class="control">
+                <button class="button is-success" @click.prevent="eTransfer()">Withdraw</button>
+            </p>
   </div>
 </template>
 
