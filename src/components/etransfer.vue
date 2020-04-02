@@ -1,27 +1,28 @@
 <template>
-  <div>
+  <div> 
   <p class="title is-0.5" text-align = "middle">E-Transfer Money</p>
 
-  <b-message title="" type="is-warning" aria-close-label="Close message">
+  <b-message title="" type="is-danger" aria-close-label="Close message" class = "email">
     Gringotts sends a notice to the email address you provide within 5 minutes.
            </b-message>
 
-        <b-message title="" type="is-warning" aria-close-label="Close message">
+        <b-message title="" type="is-success" aria-close-label="Close message" class = "square">
         The transfer has to be more than 1$
         </b-message>
 
-      <b-message title="" type="is-warning" aria-close-label="Close message">
+      <b-message title="" type="is-info" aria-close-label="Close message"class = "interac">
       if you want an interac E-transfer from one of your Gringott accounts, use another email.   
      </b-message>
-          <b-message title="" type="is-warning" aria-close-label="Close message">
+          <b-message title="" type="is-black" aria-close-label="Close message"class = "forex">
       Choose a forex currency that you wish to transfer. NOTE: Transaction may change depending on that currency you choose, this will appear on contacts account.     
          </b-message>
+         
       <div class="column">
         <b-field label = "Send Money To:">
             <b-input type="email"
                 value=""
-                maxlength="">
-            </b-input>
+          class="box">            
+        </b-input>
         </b-field>
         </div>
         <form>
@@ -36,16 +37,16 @@
             </b-field>
         </div>
         <br/>
-        
     </form>
    <div class="column">
     <b-field label = "Amount:">
-    <b-input v-model = "post.amount" type="number" placeholder="$" min = "1.00"></b-input>
+    <b-input v-model = "post.amount" type="number" placeholder="$" min = "1.00" class="box">            
+    </b-input>
     </b-select>
    </b-field>
     </div>
-    <p class="control">
-                <button class="button is-success" @click.prevent="eTransfer()">ETransfer</button>
+  <p class="control">
+     <button class="button is-success" @click.prevent="eTransfer()">ETransfer</button>
             </p>
         </div>
 </template>
@@ -79,3 +80,26 @@
     }
   }
 </script>
+
+<style>
+
+.email{
+  width: 600px;
+}
+
+.box{
+  width: 300px;
+}
+.square{
+  width: 305px;
+}
+.interac{
+  width:670px;
+}
+
+.forex{
+  width:600px;
+}
+</style>
+
+

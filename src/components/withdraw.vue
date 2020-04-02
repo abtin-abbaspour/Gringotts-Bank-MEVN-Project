@@ -2,18 +2,18 @@
   <div>
   <p class="title is-0.5" text-align = "middle">Withdraw Amount</p>
 
-  <b-message title="" type="is-warning" aria-close-label="Close message">
+  <b-message title="" type="is-danger" aria-close-label="Close message" class = "currency">
       Currency will be dependent on what country you are in.
            </b-message>
 
-        <b-message title="" type="is-warning" aria-close-label="Close message">
+        <b-message title="" type="is-success" aria-close-label="Close message" class = "withdraw">
         Choose how much you want to withdraw.
         </b-message>
 
-      <b-message title="" type="is-warning" aria-close-label="Close message">
+      <b-message title="" type="is-info" aria-close-label="Close message" class = "withdrawl">
         Withdrawl amount must be more than 10$.
      </b-message>
-          <b-message title="" type="is-warning" aria-close-label="Close message">
+          <b-message title="" type="is-black" aria-close-label="Close message" class = "bank">
         Withdrawal will appear instanly in bank records.
          </b-message>
     <form>
@@ -27,7 +27,9 @@
         <br/>
     </form>
     <b-field label = "Amount:">
-    <b-input v-model = "post.amount" type="number" placeholder="$" min = "10.00"></b-input>
+    <b-input v-model = "post.amount" type="number" placeholder="$" min = "10.00"class = "box">
+      </b-input>            
+
     </b-select>
    </b-field>
     <p class="control">
@@ -72,3 +74,23 @@
     }
   }
 </script>
+
+<style>
+.currency{
+  width:450px;
+}
+.withdraw{
+  width:350px;
+}
+.bank{
+  width:405px;
+}
+.box{
+  width: 100px;
+}
+.withdrawl{
+  width:365px;
+}
+</style>
+
+
