@@ -36,6 +36,7 @@
             </b-field>
         </div>
         <br/>
+        
     </form>
    <div class="column">
     <b-field label = "Amount:">

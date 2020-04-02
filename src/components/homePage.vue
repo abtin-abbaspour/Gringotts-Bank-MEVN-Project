@@ -20,6 +20,18 @@
 		<b-button type="is-primary" @click.prevent="deposit()" outlined>Deposit</b-button>
 		<b-button type="is-primary" @click.prevent="eTransfer()" outlined>E-Transfer</b-button>
 	</section>
+	<p class="card-header-title"></p>	
+        <b-message title="Financial Advisor" type="is-success" has-icon aria-close-label="Close message">
+ 	Financial Advisor: 
+	Batjon Sinaj 
+	647-767-8930 EXT.342
+ </b-message>
+        <b-message title="Transactions" type="is-info" has-icon aria-close-label="Close message">
+	 Click on view details on each of your transactions to see the specifics.
+ </b-message>
+        <b-message title="Contact Us" type="is-dark" has-icon icon="account" aria-close-label="Close message">
+		Meet with us at one our nearest locations, or call us and we will redirect you to the nearest bank. 
+ </b-message>
 	</div>
 	<div class = "column">
 		<table class="table table-hover">
@@ -42,6 +54,7 @@
         </table>
 <!-- 		<b-table :striped = true :data="data" :hoverable = true :columns="columns"></b-table>
  -->	</div>
+ 
 </div>
 </template>
 <script>

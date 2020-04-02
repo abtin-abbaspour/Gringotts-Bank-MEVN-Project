@@ -43,7 +43,7 @@
     </div>
     <div class="tile is-parent">
       <article class="tile is-child notification is-danger">
-        <p class="title">Wide tile</p>
+        <p class="title">Our E-Transfer System</p>
         <p class="subtitle"><br>We at Gringotts banking are proud to state that we have one of the fastest e-transfer systems in all of North America. With access to the top 6 currencies around the world, we make sure that you are able to transfer money efficiently.</p>
         <div class="content">
           <!-- Content -->
@@ -54,7 +54,7 @@
   <div class="tile is-parent">
     <article class="tile is-child notification is-success">
       <div class="content">
-        <p class="title">Tall tile</p>
+        <p class="title">Our Company</p>
         <p class="subtitle"><br>Gringotts banking is a leading Toronto and North American financial institution. From personal, bussiness and commerical banking, all the way to wealth managment and capital market investments. Our employees, finanical advisors and data scientists provide a diverse range of skills, finaicial products and services to more than a million clients across Toronto. </p>
         <p class="subtitle"><br>For more than 10 years, Gringnotts banking has been a strong communinty partner to those in need and we continue to make a strong positive impact through our corporate giving, skills and the volunteer spirit of our employees. </p>
         <div class="content">

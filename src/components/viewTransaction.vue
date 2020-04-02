@@ -12,7 +12,7 @@
             This transaction took place on {{post.date}}.
         </b-message>
 
-        <b-message title="Currency" type="is-info" aria-close-label="Close message">
+        <b-message title="E-Transfer" type="is-info" aria-close-label="Close message">
           The currency used is {{post.currency}}
         </b-message>
 
