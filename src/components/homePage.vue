@@ -15,22 +15,22 @@
 				</div>
 			</div>
 		</b-collapse>
-		<br><br>    		
-		<b-button type="is-primary" @click.prevent="withdraw()" outlined>Withdraw</b-button>
-		<b-button type="is-primary" @click.prevent="deposit()" outlined>Deposit</b-button>
-		<b-button type="is-primary" @click.prevent="eTransfer()" outlined>E-Transfer</b-button>
+		<br><br>   		
+		<b-button class = "myButton" type="is-danger" size = "is-large" @click.prevent="withdraw()">Withdraw</b-button>
+		<b-button class = "myButton" type="is-info" size = "is-large" @click.prevent="deposit()">Deposit</b-button>
+		<b-button class = "myButton" type="is-success" size = "is-large" @click.prevent="eTransfer()">E-Transfer</b-button><br><br>
 	</section>
 	<p class="card-header-title"></p>	
-        <b-message title="Financial Advisor" type="is-success" has-icon aria-close-label="Close message">
- 	Financial Advisor: 
-	Batjon Sinaj 
-	647-767-8930 EXT.342
+        <b-message title="Our Team" type="is-warning" aria-close-label="Close message">
+ 	Financial Advisor: <a @click.prevent='financialAdvisor()'>Batjon Sinaj 647-767-8930 EXT.342</a><br>
+ 	Exchange Rate Expert: <a @click.prevent='exchangeRate()'>Ben Merbaum 647-767-8930 EXT.283</a><br>
+ 	Technological Expert: <a @click.prevent='technologicalExpert()'>Abtin Abbaspour 647-767-8930 EXT.193</a>
+ 		</b-message>
+        <b-message title="Transactions" type="is-info" aria-close-label="Close message">
+	 Click on "View Details" on any transaction to view its specifics.
  </b-message>
-        <b-message title="Transactions" type="is-info" has-icon aria-close-label="Close message">
-	 Click on view details on each of your transactions to see the specifics.
- </b-message>
-        <b-message title="Contact Us" type="is-dark" has-icon icon="account" aria-close-label="Close message">
-		Meet with us at one our nearest locations, or call us and we will redirect you to the nearest bank. 
+        <b-message title="Contact Us" type="is-dark" aria-close-label="Close message">
+		Meet with us at one our nearest locations, or reach us by phone or email. <br>We will redirect you to your nearest bank as soon as possible. 
  </b-message>
 	</div>
 	<div class = "column">
@@ -106,6 +106,27 @@ export default {
 		// },
 		// logout(){
 			//this.$router.push({name: 'homePage'});
+		},
+		financialAdvisor(){
+			this.$buefy.dialog.prompt({
+                    message: `How can we help your financial process today?`,
+                    trapFocus: true,
+                    onConfirm: (value) => this.$buefy.toast.open(`Thank you for your feedback!`)
+                })
+		},
+		exchangeRate(){
+			this.$buefy.dialog.prompt({
+                    message: `What would you like to know about the exchange rate process today?`,
+                    trapFocus: true,
+                    onConfirm: (value) => this.$buefy.toast.open(`Thank you for your feedback!`)
+                })
+		},
+		technologicalExpert(){
+			this.$buefy.dialog.prompt({
+                    message: `How can we help your technological issue today?`,
+                    trapFocus: true,
+                    onConfirm: (value) => this.$buefy.toast.open(`Thank you for your feedback!`)
+                })
 		}
       }
     }
@@ -113,5 +134,8 @@ export default {
 <style>
 	.column{
 		margin:10px;
+	}
+	.myButton{
+		margin:10px 45px;
 	}
 </style>
