@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class = "column">
   <p class="title is-0.5" text-align = "middle">Withdraw Amount</p>
 
   <b-message title="" type="is-danger" aria-close-label="Close message" class = "currency">
@@ -7,14 +7,14 @@
            </b-message>
 
         <b-message title="" type="is-success" aria-close-label="Close message" class = "withdraw">
-        Select how much you would like to withdraw.
+        Select the amount you would like to withdraw.
         </b-message>
 
       <b-message title="" type="is-info" aria-close-label="Close message" class = "withdrawl">
         Withdraw amount must be more than $10.
      </b-message>
           <b-message title="" type="is-black" aria-close-label="Close message" class = "bank">
-        Withdrawal will instanly appear in bank records.
+        Withdraw will instanly appear in bank records.
          </b-message>
     <form>
       <div class="column">
@@ -27,13 +27,13 @@
         <br/>
     </form>
     <b-field label = "Amount:">
-    <b-input v-model = "post.amount" type="number" pstep = "0.01" placeholder="$" class = "box">
+    <b-input v-model = "post.amount" type="number" step = "0.01" placeholder="$" class = "box">
       </b-input>            
 
     </b-select>
    </b-field>
     <p class="control">
-                <button class="button is-success" @click.prevent="eTransfer()">Withdraw</button>
+                <button class="button is-success" @click.prevent="withdraw()">Withdraw</button>
             </p>
   </div>
 </template>
@@ -54,7 +54,7 @@
     },
     methods: {
       withdraw(){
-            if(this.post.amount === undefined || this.post.amount === null){
+        if(this.post.amount === undefined || this.post.amount === null){
           this.$buefy.snackbar.open(`Action failed - please submit a value.`);
            return;
         }
@@ -65,7 +65,7 @@
         } else if(parseFloat(this.post.amount) > parseFloat(this.posts[this.posts.length-1].balanceAfter)){
           this.$buefy.snackbar.open(`Action failed - you do not have $` + parseFloat(this.post.amount).toFixed(2) + ` balance in your account to withdraw.`);
            return;
-                   }else if(parseFloat(this.post.amount) < 10){
+        }else if(parseFloat(this.post.amount) < 10){
           this.$buefy.snackbar.open(`Action failed - the minum withdraw value is $10.`);
            return;
           }else{
@@ -76,7 +76,6 @@
           console.log("successful transaction");
           });
         }
-
       }
     }
   }
@@ -99,5 +98,3 @@
   width:365px;
 }
 </style>
-
-

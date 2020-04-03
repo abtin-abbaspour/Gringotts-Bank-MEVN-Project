@@ -1,7 +1,8 @@
 <template>
     <section>
-        <b-message title="Transaction Type" aria-close-label="Close message">
-        This transaction was a {{post.transactionType}}.     
+      <div class = "column">
+        <b-message title="Transaction Type" type = "is-info" aria-close-label="Close message">
+        This transaction was a {{post.transactionType}}.<p v-if = 'post.eTransferTo !== ""'>This eTransfer was to {{post.eTransferTo}}. </p>
            </b-message>
 
         <b-message title="Amount" type="is-danger" aria-close-label="Close message">
@@ -12,13 +13,10 @@
             This transaction took place on {{post.date}}.
         </b-message>
 
-        <b-message title="E-Transfer" type="is-info" aria-close-label="Close message">
-          The currency used is {{post.currency}}
-        </b-message>
-
         <b-message title="Balance Remaining" type="is-warning" aria-close-label="Close message">
             Following this transaction, you had ${{post.balanceAfter}} in your bank account.
         </b-message>
+      </div>
     </section>
 </template>
 <script>
@@ -37,3 +35,8 @@
       }
     }
 </script>
+<style>
+  .column{
+    margin: 20px;
+  }
+</style>

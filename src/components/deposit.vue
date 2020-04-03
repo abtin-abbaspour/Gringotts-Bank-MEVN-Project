@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class = "column">
   <p class="title is-0.5" text-align = "middle">Deposit Money</p>
   <b-message title="" type="is-danger" aria-close-label="Close message" class = "currency">
       Currency will be dependent on what country you are in.
@@ -57,15 +57,22 @@
     },
     methods: {
       deposit(){
-         if(this.post.amount === undefined || this.post.amount === null){
+        if(this.post.amount === undefined || this.post.amount === null){
           this.$buefy.snackbar.open(`Action failed - please submit a value.`);
            return;
         }
         this.post.amount = parseFloat(this.post.amount).toFixed(2);
-        if(this.posts.length === 0)
+        if(this.post.amount === undefined || this.post.amount === null){
+          this.$buefy.snackbar.open(`Action failed - please submit a value.`);
+           return;
+        }else if(parseFloat(this.post.amount) < 10){
+          this.$buefy.snackbar.open(`Action failed - the minum deposit value is $10.`);
+           return;
+        } else if(this.posts.length === 0){
           this.post.balanceAfter = parseFloat(this.post.amount).toFixed(2);
-        else
+        }else{
           this.post.balanceAfter = (parseFloat(this.posts[this.posts.length-1].balanceAfter) + parseFloat(this.post.amount)).toFixed(2);
+        }
         let uri = 'http://localhost:4000/posts/add';
         this.axios.post(uri, this.post).then(() => {
           this.$router.push({name: 'homePage'});
