@@ -2,19 +2,16 @@
   <div> 
   <p class="title is-0.5" text-align = "middle">E-Transfer Money</p>
 
-  <b-message title="" type="is-danger" aria-close-label="Close message" class = "email">
+  <b-message type="is-danger" aria-close-label="Close message" class = "email">
     Gringotts sends a notice to the email address you provide within 5 minutes.
            </b-message>
 
-        <b-message title="" type="is-success" aria-close-label="Close message" class = "square">
-        The transfer has to be more than 1$
+      <b-message type="is-success" aria-close-label="Close message" class = "square">
+        The transfer amount must be greater than $1.
         </b-message>
 
-      <b-message title="" type="is-info" aria-close-label="Close message"class = "interac">
-      if you want an interac E-transfer from one of your Gringott accounts, use another email.   
-     </b-message>
-          <b-message title="" type="is-black" aria-close-label="Close message"class = "forex">
-      Choose a forex currency that you wish to transfer. NOTE: Transaction may change depending on that currency you choose, this will appear on contacts account.     
+            <b-message type="is-black" aria-close-label="Close message"class = "forex">
+      Choose a forex currency that you wish to transfer. <br>NOTE: Transaction may change depending on your currency choice.  
          </b-message>
          
       <div class="column">

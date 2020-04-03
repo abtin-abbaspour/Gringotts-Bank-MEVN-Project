@@ -7,14 +7,14 @@
            </b-message>
 
         <b-message title="" type="is-success" aria-close-label="Close message" class = "withdraw">
-        Choose how much you want to withdraw.
+        Select how much you would like to withdraw.
         </b-message>
 
       <b-message title="" type="is-info" aria-close-label="Close message" class = "withdrawl">
-        Withdrawl amount must be more than 10$.
+        Withdraw amount must be more than $10.
      </b-message>
           <b-message title="" type="is-black" aria-close-label="Close message" class = "bank">
-        Withdrawal will appear instanly in bank records.
+        Withdrawal will instanly appear in bank records.
          </b-message>
     <form>
       <div class="column">
@@ -27,7 +27,7 @@
         <br/>
     </form>
     <b-field label = "Amount:">
-    <b-input v-model = "post.amount" type="number" placeholder="$" min = "10.00"class = "box">
+    <b-input v-model = "post.amount" type="number" pstep = "0.01" placeholder="$" class = "box">
       </b-input>            
 
     </b-select>
@@ -54,6 +54,10 @@
     },
     methods: {
       withdraw(){
+            if(this.post.amount === undefined || this.post.amount === null){
+          this.$buefy.snackbar.open(`Action failed - please submit a value.`);
+           return;
+        }
         this.post.amount = parseFloat(this.post.amount).toFixed(2);
         if(this.posts.length === 0){
            this.$buefy.snackbar.open(`Action failed - you have no balance in your account to withdraw.`);
@@ -61,7 +65,10 @@
         } else if(parseFloat(this.post.amount) > parseFloat(this.posts[this.posts.length-1].balanceAfter)){
           this.$buefy.snackbar.open(`Action failed - you do not have $` + parseFloat(this.post.amount).toFixed(2) + ` balance in your account to withdraw.`);
            return;
-        } else{
+                   }else if(parseFloat(this.post.amount) < 10){
+          this.$buefy.snackbar.open(`Action failed - the minum withdraw value is $10.`);
+           return;
+          }else{
           this.post.balanceAfter = (parseFloat(this.posts[this.posts.length-1].balanceAfter) - parseFloat(this.post.amount)).toFixed(2);
           let uri = 'http://localhost:4000/posts/add';
           this.axios.post(uri, this.post).then(() => {

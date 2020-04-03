@@ -6,11 +6,11 @@
            </b-message>
 
         <b-message title="" type="is-success" aria-close-label="Close message"  class = "withdraw">
-        Choose how much you want to deposit into your account.
+        Select the amount you would like to deposit into your account.
         </b-message>
 
       <b-message title="" type="is-info" aria-close-label="Close message" class = "withdrawl">
-        Deposit amount must be more than 10$.
+        Deposit amount must be more than $10.
      </b-message>
           <b-message title="" type="is-black" aria-close-label="Close message" class = "bank">
         Deposit will appear instanly in bank records.
@@ -26,7 +26,7 @@
         <br/>
     </form>
     <b-field label = "Amount:">
-    <b-input v-model = "post.amount" type="number" placeholder="$" min = "10.00" class= "box">
+    <b-input v-model = "post.amount" type="number" step = "0.01" placeholder="$" class= "box">
     </b-input>
        </b-select>
    </b-field>
@@ -57,6 +57,10 @@
     },
     methods: {
       deposit(){
+         if(this.post.amount === undefined || this.post.amount === null){
+          this.$buefy.snackbar.open(`Action failed - please submit a value.`);
+           return;
+        }
         this.post.amount = parseFloat(this.post.amount).toFixed(2);
         if(this.posts.length === 0)
           this.post.balanceAfter = parseFloat(this.post.amount).toFixed(2);
