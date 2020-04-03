@@ -17,7 +17,7 @@
           <b-message title="" type="is-black" aria-close-label="Close message" class = "bank">
         Withdraw will instanly appear in bank records.
          </b-message>
-<b-field label = "ETransfer Currency:">
+<b-field label = "Currency:">
             <b-select v-model = "currencyType" placeholder="Currency">
                 <option value = "$CAD">$CAD</option>
                 <option value = "$USD">$USD</option>
@@ -117,11 +117,17 @@
           });
         }
       },
-      convertToDollars(){
+     convertToDollars(){
         if(this.currencyType==="$CAD")
-          return this.post.amount * 1;//insert information here about value of the money
-        else
-          return this.post.amount * 3;//ex. if it's euro * 1.4 or whatever the exchange rate currently is
+          return this.post.amount * 1.00; 
+          else if (this.currency==="$USD")
+          return this.post.amount * 0.70;
+          else if (this.currency==="€EURO")
+          return this.post.amount * 0.65;
+          else if (this.currency==="£GBP")
+          return this.post.amount * 0.57;
+          else if (this.currency==="¥JPY")
+          return this.post.amount * 75.35;
       }
     }
   }
