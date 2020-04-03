@@ -11,7 +11,7 @@
 			</div>
 			<div class="card-content">
 				<div class="content" v-for="(post,index) in posts.slice().reverse()" :key="post._id" v-if="index===0">
-					<p>${{post.balanceAfter}}</p>
+					<p>${{post.balanceAfter}} CAD</p>
 				</div>
 			</div>
 		</b-collapse>
@@ -46,7 +46,7 @@
             <tbody>
                 <tr v-for="post in posts.slice().reverse()" :key="post._id">
                   <td>{{ post.transactionType }}</td>
-                  <td>${{ post.amount}}</td>
+                  <td>${{ post.amount}} CAD</td>
                   <td>{{ post.date }}</td>
                   <td><router-link :to="{name: 'viewer', params: { id: post._id }}" class="btn btn-primary">View Details</router-link></td>
                 </tr>
@@ -123,7 +123,7 @@ export default {
 		},
 		technologicalExpert(){
 			this.$buefy.dialog.prompt({
-                    message: `How can we help your technological issue today?`,
+                    message: `How can we help you with your technological issue today?`,
                     trapFocus: true,
                     onConfirm: (value) => this.$buefy.toast.open(`Thank you for your feedback!`)
                 })
@@ -134,5 +134,8 @@ export default {
 <style>
 	.column{
 		margin:10px;
+	}
+	.myButton{
+		margin:10px 45px;
 	}
 </style>

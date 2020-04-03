@@ -6,7 +6,7 @@
            </b-message>
 
         <b-message title="Amount" type="is-danger" aria-close-label="Close message">
-            The amount of money involved in this transaction was ${{post.amount}}.
+            The amount of money involved in this transaction was ${{post.amount}} CAD.
         </b-message>
 
         <b-message title="Date" type="is-success" aria-close-label="Close message">
@@ -14,7 +14,7 @@
         </b-message>
 
         <b-message title="Balance Remaining" type="is-warning" aria-close-label="Close message">
-            Following this transaction, you had ${{post.balanceAfter}} in your bank account.
+            Following this transaction, you had ${{post.balanceAfter}} CAD in your bank account.
         </b-message>
       </div>
     </section>

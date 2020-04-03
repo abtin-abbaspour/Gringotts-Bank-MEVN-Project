@@ -1,4 +1,5 @@
 <template>
+  <div class = "columns">
   <div class = "column">
   <p class="title is-0.5" text-align = "middle">Withdraw Amount</p>
 
@@ -16,26 +17,54 @@
           <b-message title="" type="is-black" aria-close-label="Close message" class = "bank">
         Withdraw will instanly appear in bank records.
          </b-message>
-    <form>
-      <div class="column">
-        <b-field label = "ETransfer Currency:">
-            <b-select placeholder="Currency">
-                <option>$CAD</option>
+<b-field label = "ETransfer Currency:">
+            <b-select v-model = "currencyType" placeholder="Currency">
+                <option value = "$CAD">$CAD</option>
+                <option value = "$USD">$USD</option>
+                <option value = "€EURO">€EURO</option>
+                <option value = "£GBP">£GBP</option>
             </b-select>
             </b-field>
-        </div>
-        <br/>
-    </form>
     <b-field label = "Amount:">
     <b-input v-model = "post.amount" type="number" step = "0.01" placeholder="$" class = "box">
       </b-input>            
 
-    </b-select>
    </b-field>
     <p class="control">
                 <button class="button is-success" @click.prevent="withdraw()">Withdraw</button>
             </p>
   </div>
+          <div class = "column">
+
+
+          <div class="tile is-ancestor">
+  <div class="tile is-vertical is-10">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+          <p class="title">Vertical...</p>
+          <p class="subtitle">Top tile</p>
+        </article>
+        <article class="tile is-child notification is-warning">
+          <p class="title">...tiles</p>
+          <p class="subtitle">Bottom tile</p>
+        </article>
+        <article class="tile is-child notification is-success">
+      <div class="content">
+        <p class="title">Put the exchange rates here</p><br>
+        <p class="subtitle">Price for a whatever</p>
+        <p class="subtitle">Price for a next</p>
+        <p class="subtitle">Price for a another</p>
+        <p class="subtitle">Price for a here</p>
+      </div>
+    </article>
+      </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+</div>
 </template>
 
 <script>
@@ -43,7 +72,8 @@
     data(){
         return {
           posts: [],
-          post:{transactionType: "Withdraw", eTransferTo: "", date: new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()}
+          post:{transactionType: "Withdraw", eTransferTo: "", date: new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()},
+          currencyType: "$CAD"
         }
     },
     created() {
@@ -59,6 +89,7 @@
            return;
         }
         this.post.amount = parseFloat(this.post.amount).toFixed(2);
+        this.post.amount = parseFloat(this.convertToDollars()).toFixed(2);
         if(this.posts.length === 0){
            this.$buefy.snackbar.open(`Action failed - you have no balance in your account to withdraw.`);
            return;
@@ -76,6 +107,12 @@
           console.log("successful transaction");
           });
         }
+      },
+      convertToDollars(){
+        if(this.currencyType==="$CAD")
+          return this.post.amount * 1;//insert information here about value of the money
+        else
+          return this.post.amount * 3;//ex. if it's euro * 1.4 or whatever the exchange rate currently is
       }
     }
   }
