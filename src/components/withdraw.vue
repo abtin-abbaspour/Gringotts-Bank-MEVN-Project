@@ -23,6 +23,7 @@
                 <option value = "$USD">$USD</option>
                 <option value = "€EURO">€EURO</option>
                 <option value = "£GBP">£GBP</option>
+                <option value = "¥JPY">¥JPY</option>
             </b-select>
             </b-field>
     <b-field label = "Amount:">
@@ -42,20 +43,21 @@
     <div class="tile">
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-primary">
-          <p class="title">Vertical...</p>
-          <p class="subtitle">Top tile</p>
+          <p class="title">Withdraw</p>
+          <p class="subtitle">Remove the money from your chequing account and place it in your digital wallet.</p>
         </article>
         <article class="tile is-child notification is-warning">
-          <p class="title">...tiles</p>
-          <p class="subtitle">Bottom tile</p>
+          <p class="title">Questions</p>
+ 	Contact our technology expert <a @click.prevent='technologicalExpert()'>Abtin Abbaspour.</a>
         </article>
         <article class="tile is-child notification is-success">
       <div class="content">
-        <p class="title">Put the exchange rates here</p><br>
-        <p class="subtitle">Price for a whatever</p>
-        <p class="subtitle">Price for a next</p>
-        <p class="subtitle">Price for a another</p>
-        <p class="subtitle">Price for a here</p>
+        <p class="title">Exchange Rates</p><br>
+        <p class="subtitle"> CAD/CAD = 1.00 </p>
+        <p class="subtitle"> CAD/USD = 0.704049 </p>
+        <p class="subtitle">CAD/EURO = 0.651417</p>
+        <p class="subtitle">CAD/GBP = 0.574113 </p>
+        <p class="subtitle">CAD/JPY = 76.3692</p>
       </div>
     </article>
       </div>
@@ -83,6 +85,13 @@
       });
     },
     methods: {
+		technologicalExpert(){
+			this.$buefy.dialog.prompt({
+                    message: `How could we help you today with your technological issue?`,
+                    trapFocus: true,
+                    onConfirm: (value) => this.$buefy.toast.open(`Thank you, we'll get back to you as soon as possible!!`)
+                })
+		},
       withdraw(){
         if(this.post.amount === undefined || this.post.amount === null){
           this.$buefy.snackbar.open(`Action failed - please submit a value.`);

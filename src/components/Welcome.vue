@@ -44,7 +44,7 @@
     <div class="tile is-parent">
       <article class="tile is-child notification is-danger">
         <p class="title">Our E-Transfer System</p>
-        <p class="subtitle"><br>We at Gringotts banking are proud to state that we have one of the fastest e-transfer systems in all of North America. With access to the top 6 currencies around the world, we make sure that you are able to transfer money efficiently.</p>
+        <p class="subtitle"><br>We at Gringotts banking are proud to state that we have one of the fastest e-transfer systems in all of North America. With access to the top 4 currencies around the world, we make sure that you are able to transfer money efficiently.</p>
         <div class="content">
           <!-- Content -->
         </div>

@@ -11,9 +11,10 @@
         The transfer amount must be greater than $1.
         </b-message>
 
-      <b-message type="is-black" aria-close-label="Close message"class = "forex">
-      Choose a forex currency that you wish to transfer. <br>NOTE: Transaction may change depending on your currency choice.    
-         </b-message>
+      <b-message type="is-black" aria-close-label="Close message" class = "forex">
+        NOTE: Transaction may change depending on your currency choice.    
+         </b-message>   
+             <br>
          
         <b-field >
             <b-input v-model = "post.eTransferTo"
@@ -27,6 +28,7 @@
                 <option value = "$USD">$USD</option>
                 <option value = "€EURO">€EURO</option>
                 <option value = "£GBP">£GBP</option>
+                <option value = "¥JPY">¥JPY</option>
             </b-select>
             </b-field>
     <b-field label = "Amount:">
@@ -39,27 +41,26 @@
             </p>
         </div>
         <div class = "column">
-
-
           <div class="tile is-ancestor">
   <div class="tile is-vertical is-10">
     <div class="tile">
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-primary">
-          <p class="title">Vertical...</p>
-          <p class="subtitle">Top tile</p>
+          <p class="title">E-Transfer</p>
+          <p class="subtitle">Here you can send money to contacts.</p>
         </article>
         <article class="tile is-child notification is-warning">
-          <p class="title">...tiles</p>
-          <p class="subtitle">Bottom tile</p>
+          <p class="title">Questions?</p>
+	Contact our E-Transfer expert <a @click.prevent='exchangeRate()'>Ben Merbaum.</a><br>
         </article>
         <article class="tile is-child notification is-success">
       <div class="content">
-        <p class="title">Put the exchange rates here</p><br>
-        <p class="subtitle">Price for a whatever</p>
-        <p class="subtitle">Price for a next</p>
-        <p class="subtitle">Price for a another</p>
-        <p class="subtitle">Price for a here</p>
+        <p class="title">Exchange Rates</p><br>
+        <p class="subtitle"> CAD/CAD = 1.00 </p>
+        <p class="subtitle"> CAD/USD = 0.704049 </p>
+        <p class="subtitle">CAD/EURO = 0.651417</p>
+        <p class="subtitle">CAD/GBP = 0.574113 </p>
+        <p class="subtitle">CAD/JPY = 76.3692</p>
       </div>
     </article>
       </div>
@@ -88,6 +89,13 @@
       });
     },
     methods: {
+      exchangeRate(){
+			this.$buefy.dialog.prompt({
+                    message: `How could we help you today with the exchange rate?`,
+                    trapFocus: true,
+                    onConfirm: (value) => this.$buefy.toast.open(`Thank you, we'll get back to you as soon as possible!!`)
+                })
+		},
       eTransfer(){
         if(this.post.amount === undefined || this.post.amount === null){
           this.$buefy.snackbar.open(`Action failed - please submit a value.`);
