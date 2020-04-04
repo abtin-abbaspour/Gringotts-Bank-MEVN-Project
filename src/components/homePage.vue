@@ -1,25 +1,14 @@
 <template>
 	<div class = "columns">
 		<div class = "column">
-	<section>
-		<b-collapse class="card" aria-id="contentIdForA11y3">
-			<div slot="trigger" slot-scope="props" class="card-header" role="button" aria-controls="contentIdForA11y3">
-				<p class="card-header-title">Current Balance</p>
-				<a class="card-header-icon">
-					<b-icon :icon="props.open ? 'menu-down' : 'menu-up'"></b-icon>
-				</a>
-			</div>
-			<div class="card-content">
-				<div class="content" v-for="(transaction,index) in transactions.slice().reverse()" :key="transaction._id" v-if="index===0">
-					<p>${{transaction.balanceAfter}} CAD</p>
-				</div>
-			</div>
-		</b-collapse>
+			<b-button type="is-dark" size = "is-large" expanded>Current Balance</b-button>
+            <b-button type="is-info" size = "is-large" v-for="(transaction,index) in transactions.slice().reverse()" :key="transaction._id" v-if="index===0" expanded>${{transaction.balanceAfter}} CAD</b-button>
+            <b-button type = "is-info" size = "is-large" v-if="transactions.length===0" expanded>$0.00 CAD</b-button>
+
 			<br><br>   		
-		<b-button class = "myButton" type="is-danger" size = "is-large" @click.prevent="withdraw()">Withdraw</b-button>
-		<b-button class = "myButton" type="is-info" size = "is-large" @click.prevent="deposit()">Deposit</b-button>
-		<b-button class = "myButton" type="is-success" size = "is-large" @click.prevent="eTransfer()">E-Transfer</b-button><br>
-	</section>
+		<b-tooltip label = "Withdraw some of your balance"><b-button class = "myButton" type="is-danger" size = "is-large" @click.prevent="withdraw()">Withdraw</b-button></b-tooltip>
+		<b-tooltip label = "Deposit some of your balance"><b-button class = "myButton" type="is-info" size = "is-large" @click.prevent="deposit()">Deposit</b-button></b-tooltip>
+		<b-tooltip label = "E-Transfer some of your balance"><b-button class = "myButton" type="is-success" size = "is-large" @click.prevent="eTransfer()">E-Transfer</b-button></b-tooltip><br>
 	<p class="card-header-title"></p>	
         <b-message title="Financial Advisor" type="is-success" aria-close-label="Close message">
  	Financial Advisor: <a @click.prevent='financialAdvisor()'>Batjon Sinaj 647-767-8930 EXT.342</a><br>
@@ -35,6 +24,8 @@
 	 <br><br>
 	</div>
 	<div class = "column">
+		<b-button type="is-dark" size = "is-large" expanded>Transactions List</b-button>
+
 		<table class="table table-hover">
             <thead>
             <tr>
@@ -133,10 +124,14 @@ export default {
     }
 </script>
 <style>
-	.column{
-		margin:10px;
+	.columns{
+		margin-left:8px;
+		margin-right: 8px;
 	}
 	.myButton{
-		margin:10px 45px;
+		margin:10px 43px;
+	}
+	th{
+		width:180px;
 	}
 </style>
