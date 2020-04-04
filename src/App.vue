@@ -1,38 +1,36 @@
 <template>
-  <div>
-    <title>Hello</title>
-    <b-navbar class="is-second navbar">
-      <template slot="brand">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          <img src="https://i.ibb.co/B6fwcVd/gringotts.png" height="3rem" />
-        </b-navbar-item>
-      </template>
-      <template slot="start">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">Welcome</b-navbar-item>
-<!--         <b-navbar-item tag="router-link" :to="{ path: '/create' }">Create</b-navbar-item>
- -->        <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">Home</b-navbar-item>
-        <b-navbar-dropdown label="Actions" >
-          <b-navbar-item tag="router-link" :to="{ path: '/deposit' }" class="is-first navbar">Deposit</b-navbar-item>
-          <b-navbar-item tag="router-link" :to="{ path: '/withdraw' }" class="is-first navbar">Withdraw</b-navbar-item>
-          <b-navbar-item tag="router-link" :to="{ path: '/eTransfer' }" class="is-first navbar">E-Transfer</b-navbar-item>
-        </b-navbar-dropdown>
-      </template>
-
-      <template slot="end">
-        <b-navbar-item tag="div">
-          <div class="buttons">
-            <a class="is-first button" @click.prevent="reset()">
-              <strong>Reset Account</strong>
-            </a>
-          </div>
-        </b-navbar-item>
-      </template>
-    </b-navbar>
-    <br />
-    <transition name="fade">
-      <router-view></router-view>
-    </transition>
-  </div>
+    <div>
+        <title>Hello</title>
+        <b-navbar class="is-second navbar">
+            <template slot="brand">
+                <b-navbar-item tag="router-link" :to="{ path: '/' }">
+                    <img src="https://i.ibb.co/B6fwcVd/gringotts.png" height="3rem" />
+                </b-navbar-item>
+            </template>
+            <template slot="start">
+                <b-navbar-item tag="router-link" :to="{ path: '/' }">Welcome</b-navbar-item>
+                <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">Home</b-navbar-item>
+                <b-navbar-dropdown label="Actions" >
+                    <b-navbar-item tag="router-link" :to="{ path: '/deposit' }" class="is-first navbar">Deposit</b-navbar-item>
+                    <b-navbar-item tag="router-link" :to="{ path: '/withdraw' }" class="is-first navbar">Withdraw</b-navbar-item>
+                    <b-navbar-item tag="router-link" :to="{ path: '/eTransfer' }" class="is-first navbar">E-Transfer</b-navbar-item>
+                </b-navbar-dropdown>
+            </template>
+            <template slot="end">
+                <b-navbar-item tag="div">
+                    <div class="buttons">
+                        <a class="is-first button" @click.prevent="reset()">
+                        <strong>Reset Account</strong>
+                        </a>
+                    </div>
+                </b-navbar-item>
+            </template>
+        </b-navbar>
+        <br />
+        <transition name="fade">
+            <router-view></router-view>
+        </transition>
+    </div>
 </template>
 
 <style lang="scss">

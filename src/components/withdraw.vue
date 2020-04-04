@@ -66,73 +66,76 @@
   </div>
   </div>
 </div>
-
 </div>
 </template>
-
 <script>
-    export default {
-    data(){
+export default {
+    data() {
         return {
-          transactions: [],
-          transaction:{transactionType: "Withdraw", eTransferTo: "", date: new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()},
-          currency: "$CAD"
+            transactions: [],
+            transaction: {
+                transactionType: "Withdraw",
+                eTransferTo: "",
+                date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()
+            },
+            currency: "$CAD"
         }
     },
     created() {
-      let uri = 'http://localhost:4000/transactions';
-      this.axios.get(uri).then(response => {
-        this.transactions = response.data;
-      });
+        let uri = 'http://localhost:4000/transactions';
+        this.axios.get(uri).then(response => {
+            this.transactions = response.data;
+        });
     },
     methods: {
-		technologicalExpert(){
-			this.$buefy.dialog.prompt({
-                    message: `How could we help you today with your technological issue?`,
-                    trapFocus: true,
-                    onConfirm: (value) => this.$buefy.toast.open(`Thank you, we'll get back to you as soon as possible!!`)
-                })
-		},
-      withdraw(){
-        if(this.transaction.amount === undefined || this.transaction.amount === null){
-          this.$buefy.snackbar.open(`Action failed - please submit a value.`);
-           return;
+        technologicalExpert() {
+            this.$buefy.dialog.prompt({
+                message: `How could we help you today with your technological issue?`,
+                trapFocus: true,
+                onConfirm: (value) => this.$buefy.toast.open(`Thank you, we'll get back to you as soon as possible!!`)
+            })
+        },
+        withdraw() {
+            if (this.transaction.amount === undefined || this.transaction.amount === null) {
+                this.$buefy.snackbar.open(`Action failed - please submit a value.`);
+                return;
+            }
+            this.transaction.amount = parseFloat(this.transaction.amount).toFixed(2);
+            this.transaction.amount = parseFloat(this.convertToCAD()).toFixed(2);
+            if (this.transactions.length === 0) {
+                this.$buefy.snackbar.open(`Action failed - you have no balance in your account to withdraw.`);
+                return;
+            } else if (parseFloat(this.transaction.amount) > parseFloat(this.transactions[this.transactions.length - 1].balanceAfter)) {
+                this.$buefy.snackbar.open(`Action failed - you do not have $` + parseFloat(this.transaction.amount).toFixed(2) + ` balance in your account to withdraw.`);
+                return;
+            } else if (parseFloat(this.transaction.amount) < 10) {
+                this.$buefy.snackbar.open(`Action failed - the minum withdraw value is $10.`);
+                return;
+            } else {
+                this.transaction.balanceAfter = (parseFloat(this.transactions[this.transactions.length - 1].balanceAfter) - parseFloat(this.transaction.amount)).toFixed(2);
+                let uri = 'http://localhost:4000/transactions/add';
+                this.axios.post(uri, this.transaction).then(() => {
+                    this.$router.push({
+                        name: 'homePage'
+                    });
+                });
+            }
+        },
+        convertToCAD() {
+            if (this.currency === "$CAD")
+                return this.transaction.amount * 1.00;
+            else if (this.currency === "$USD")
+                return this.transaction.amount * 1.4203557;
+            else if (this.currency === "€EURO")
+                return this.transaction.amount * 1.535115;
+            else if (this.currency === "£GBP")
+                return this.transaction.amount * 1.741817;
+            else if (this.currency === "¥JPY")
+                return this.transaction.amount * 0.013094;
+            else
+                return this.transaction.amount;
         }
-        this.transaction.amount = parseFloat(this.transaction.amount).toFixed(2);
-        this.transaction.amount = parseFloat(this.convertToCAD()).toFixed(2);
-        if(this.transactions.length === 0){
-           this.$buefy.snackbar.open(`Action failed - you have no balance in your account to withdraw.`);
-           return;
-        } else if(parseFloat(this.transaction.amount) > parseFloat(this.transactions[this.transactions.length-1].balanceAfter)){
-          this.$buefy.snackbar.open(`Action failed - you do not have $` + parseFloat(this.transaction.amount).toFixed(2) + ` balance in your account to withdraw.`);
-           return;
-        }else if(parseFloat(this.transaction.amount) < 10){
-          this.$buefy.snackbar.open(`Action failed - the minum withdraw value is $10.`);
-           return;
-          }else{
-          this.transaction.balanceAfter = (parseFloat(this.transactions[this.transactions.length-1].balanceAfter) - parseFloat(this.transaction.amount)).toFixed(2);
-          let uri = 'http://localhost:4000/transactions/add';
-          this.axios.post(uri, this.transaction).then(() => {
-          this.$router.push({name: 'homePage'});
-          console.log("successful transaction");
-          });
-        }
-      },
-     convertToCAD(){
-        if(this.currency==="$CAD")
-          return this.transaction.amount * 1.00; 
-          else if (this.currency==="$USD")
-          return this.transaction.amount * 1.4203557;
-          else if (this.currency==="€EURO")
-          return this.transaction.amount * 1.535115;
-          else if (this.currency==="£GBP")
-          return this.transaction.amount * 1.741817;
-          else if (this.currency==="¥JPY")
-          return this.transaction.amount * 0.013094;
-          else 
-          return this.transaction.amount;
-      }
-  }
+    }
 }
 </script>
 
