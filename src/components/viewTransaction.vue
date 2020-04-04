@@ -4,7 +4,7 @@
     <b-button tag="router-link"
       to="/homePage"
       type="is-link" size = "is-large" id = "homebutton">
-      <strong>< Home</strong> 
+      <strong> Home</strong> 
     </b-button>
     <p id = "title">Transaction Details</p>
     <br><br>
