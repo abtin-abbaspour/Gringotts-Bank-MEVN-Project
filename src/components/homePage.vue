@@ -10,19 +10,19 @@
 				</a>
 			</div>
 			<div class="card-content">
-				<div class="content" v-for="(post,index) in posts.slice().reverse()" :key="post._id" v-if="index===0">
-					<p>${{post.balanceAfter}} CAD</p>
+				<div class="content" v-for="(transaction,index) in transactions.slice().reverse()" :key="transaction._id" v-if="index===0">
+					<p>${{transaction.balanceAfter}} CAD</p>
 				</div>
 			</div>
 		</b-collapse>
 			<br><br>   		
 		<b-button class = "myButton" type="is-danger" size = "is-large" @click.prevent="withdraw()">Withdraw</b-button>
 		<b-button class = "myButton" type="is-info" size = "is-large" @click.prevent="deposit()">Deposit</b-button>
-		<b-button class = "myButton" type="is-success" size = "is-large" @click.prevent="eTransfer()">E-Transfer</b-button><br><br>
+		<b-button class = "myButton" type="is-success" size = "is-large" @click.prevent="eTransfer()">E-Transfer</b-button><br>
 	</section>
 	<p class="card-header-title"></p>	
-        <b-message title="Financial Advisor" type="is-success" has-icon aria-close-label="Close message">
- Financial Advisor: <a @click.prevent='financialAdvisor()'>Batjon Sinaj 647-767-8930 EXT.342</a><br>
+        <b-message title="Financial Advisor" type="is-success" aria-close-label="Close message">
+ 	Financial Advisor: <a @click.prevent='financialAdvisor()'>Batjon Sinaj 647-767-8930 EXT.342</a><br>
  	Exchange Rate Expert: <a @click.prevent='exchangeRate()'>Ben Merbaum 647-899-1766 EXT.283</a><br>
  	Technological Expert: <a @click.prevent='technologicalExpert()'>Abtin Abbaspour 647-127-8803 EXT.193</a>
  		</b-message>
@@ -32,6 +32,7 @@
  <b-message title="Contact Us" type="is-dark" aria-close-label="Close message">
 		Meet with us at one our nearest locations, or reach us by phone or email. <br>We will redirect you to your nearest bank as soon as possible. 
 	 </b-message>
+	 <br><br>
 	</div>
 	<div class = "column">
 		<table class="table table-hover">
@@ -44,11 +45,11 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="post in posts.slice().reverse()" :key="post._id">
-                  <td>{{ post.transactionType }}</td>
-                  <td>${{ post.amount}} CAD</td>
-                  <td>{{ post.date }}</td>
-                  <td><router-link :to="{name: 'viewer', params: { id: post._id }}" class="btn btn-primary">View Details</router-link></td>
+                <tr v-for="transaction in transactions.slice().reverse()" :key="transaction._id">
+                  <td>{{ transaction.transactionType }}</td>
+                  <td>${{ transaction.amount}} CAD</td>
+                  <td>{{ transaction.date }}</td>
+                  <td><router-link :to="{name: 'viewer', params: { id: transaction._id }}" class="btn btn-primary">View Details</router-link></td>
                 </tr>
             </tbody>
         </table>
@@ -61,18 +62,18 @@
 export default {
       data() {
         return {
-        	posts: [],
+        	transactions: [],
         	balance: 0
         }
        }, created(){
-       		let uri = 'http://localhost:4000/posts';
+       		let uri = 'http://localhost:4000/transactions';
       		this.axios.get(uri).then(response => {
-        		this.posts = response.data;
+        		this.transactions = response.data;
       		});
 
-      		// for(var post of this.posts){
-      		// 	this.balance = post.balanceAfter;
-      		// 	console.log(post.balanceAfter);
+      		// for(var transaction of this.transactions){
+      		// 	this.balance = transaction.balanceAfter;
+      		// 	console.log(transaction.balanceAfter);
       		// }
       		// console.log(this.balance);
 
@@ -81,18 +82,18 @@ export default {
 			// this.account = response.data;
         // });
       // }, mounted(){
-      // 	for(var post of this.posts){
-      // 			this.balance = post.balanceAfter;
-      // 			console.log(post.balanceAfter);
+      // 	for(var transaction of this.transactions){
+      // 			this.balance = transaction.balanceAfter;
+      // 			console.log(transaction.balanceAfter);
       // 		}
       // 		console.log(this.balance);
       	},
       // mounted(){
-      // 	if(this.posts.length > 0)
-      // 			this.balance = this.posts[this.posts.length-1].balanceAfter;
+      // 	if(this.transactions.length > 0)
+      // 			this.balance = this.transactions[this.transactions.length-1].balanceAfter;
       // 		else
       // 			console.log("No items");
-      // 	console.log(this.posts[0].balanceAfter);
+      // 	console.log(this.transactions[0].balanceAfter);
       // },
       methods:{
 		withdraw(){

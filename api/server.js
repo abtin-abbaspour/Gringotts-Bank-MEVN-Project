@@ -5,7 +5,7 @@ const PORT = 4000;
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./DB.js');
-const postRoute = require('./post.route');
+const transactionRoute = require('./transaction.route');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/posts', postRoute);
+app.use('/transactions', transactionRoute);
 
 app.listen(PORT, function(){
   console.log('Server is running on Port:',PORT);

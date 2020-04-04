@@ -2,19 +2,19 @@
     <section>
       <div class = "column">
         <b-message title="Transaction Type" type = "is-info" aria-close-label="Close message">
-        This transaction was a {{post.transactionType}}.<p v-if = 'post.eTransferTo !== ""'>This eTransfer was to {{post.eTransferTo}}. </p>
+        This transaction was a {{transaction.transactionType}}.<p v-if = 'transaction.eTransferTo !== ""'>This eTransfer was to {{transaction.eTransferTo}}. </p>
            </b-message>
 
         <b-message title="Amount" type="is-danger" aria-close-label="Close message">
-            The amount of money involved in this transaction was ${{post.amount}} CAD.
+            The amount of money involved in this transaction was ${{transaction.amount}} CAD.
         </b-message>
 
         <b-message title="Date" type="is-success" aria-close-label="Close message">
-            This transaction took place on {{post.date}}.
+            This transaction took place on {{transaction.date}}.
         </b-message>
 
         <b-message title="Balance Remaining" type="is-warning" aria-close-label="Close message">
-            Following this transaction, you had ${{post.balanceAfter}} CAD in your bank account.
+            Following this transaction, you had ${{transaction.balanceAfter}} CAD in your bank account.
         </b-message>
       </div>
     </section>
@@ -24,13 +24,13 @@
 
       data() {
         return {
-          post: {}
+          transaction: {}
         }
       },
       created() {
-        let uri = `http://localhost:4000/posts/edit/${this.$route.params.id}`;
+        let uri = `http://localhost:4000/transactions/edit/${this.$route.params.id}`;
         this.axios.get(uri).then((response) => {
-            this.post = response.data;
+            this.transaction = response.data;
         });
       }
     }

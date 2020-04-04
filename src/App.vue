@@ -1,5 +1,6 @@
 <template>
   <div>
+    <title>Hello</title>
     <b-navbar class="is-second navbar">
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
@@ -102,7 +103,6 @@ $navbar-item-img-max-height: 3rem !important;
 body {
   background-color: #f7e79c;
   background-size: cover;
-  height: 941px;
 }
 
 </style>
@@ -111,20 +111,20 @@ body {
 export default {
     data() {
         return {
-            posts: []
+            transactions: []
         }
        }, created(){
-            let uri = 'http://localhost:4000/posts';
+            let uri = 'http://localhost:4000/transactions';
             this.axios.get(uri).then(response => {
-                this.posts = response.data;
+                this.transactions = response.data;
             });
       },
     methods: {
         reset(){
-            for(var p of this.posts){
-                let uri = `http://localhost:4000/posts/delete/`+p._id;
+            for(var t of this.transactions){
+                let uri = `http://localhost:4000/transactions/delete/`+t._id;
                 this.axios.delete(uri).then(response => {
-                this.posts = response.data;
+                this.transactions = response.data;
                 });
             }
             this.$buefy.snackbar.open({

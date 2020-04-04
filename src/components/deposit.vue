@@ -17,7 +17,7 @@
         Deposit will appear instanly in bank records.
          </b-message>
 <b-field label = "Currency:">
-            <b-select v-model = "currencyType" placeholder="Currency">
+            <b-select v-model = "currency" placeholder="Currency">
                 <option value = "$CAD">$CAD</option>
                 <option value = "$USD">$USD</option>
                 <option value = "€EURO">€EURO</option>
@@ -27,9 +27,9 @@
             </b-select>
             </b-field>
     <b-field label = "Amount:">
-    <b-input v-model = "post.amount" type="number" step = "0.01" placeholder="$" class= "box">
+    <b-input v-model = "transaction.amount" type="number" step = "0.01" placeholder="$" class= "box">
     </b-input>
-   </b-field>
+   </b-field><br>
      <p class="control">
                 <button class="button is-success" @click.prevent="deposit()">Deposit</button>
             </p>
@@ -38,6 +38,7 @@
 
         </b-field>
     </form>
+    <br>
   </div>
           <div class = "column">
 
@@ -52,16 +53,16 @@
         </article>
         <article class="tile is-child notification is-warning">
           <p class="title">Questions?</p>
-	Contact our finance expert <a @click.prevent='financialAdvisor()'>Batjon Sinaj.</a><br>
+	Consult with our finance expert <a @click.prevent='financialAdvisor()'>Batjon Sinaj.</a><br>
         </article>
         <article class="tile is-child notification is-success">
       <div class="content">
         <p class="title">Exchange Rates</p><br>
-        <p class="subtitle"> CAD/CAD = 1.00 </p>
-        <p class="subtitle"> CAD/USD = 0.704049 </p>
-        <p class="subtitle">CAD/EURO = 0.651417</p>
-        <p class="subtitle">CAD/GBP = 0.574113 </p>
-        <p class="subtitle">CAD/JPY = 76.3692</p>
+        <p class="subtitle">$CAD/$CAD = 1.00 </p>
+        <p class="subtitle">$USD/$CAD = 1.4203557 </p>
+        <p class="subtitle">€EURO/$CAD = 1.535115</p>
+        <p class="subtitle">£GBP/$CAD = 1.741817 </p>
+        <p class="subtitle">¥JPY/$CAD = 0.013094</p>
       </div>
     </article>
       </div>
@@ -76,15 +77,15 @@
     export default {
     data(){
         return {
-          posts: [],
-          post:{transactionType: "Deposit", eTransferTo: "", date: new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()},
-          currencyType: "$CAD"
+          transactions: [],
+          transaction:{transactionType: "Deposit", eTransferTo: "", date: new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()},
+          currency: "$CAD"
         }
     },
     created() {
-      let uri = 'http://localhost:4000/posts';
+      let uri = 'http://localhost:4000/transactions';
       this.axios.get(uri).then(response => {
-        this.posts = response.data;
+        this.transactions = response.data;
       });
     },
     methods: {
@@ -96,40 +97,42 @@
                 })
 		},
       deposit(){
-        if(this.post.amount === undefined || this.post.amount === null){
+        if(this.transaction.amount === undefined || this.transaction.amount === null){
           this.$buefy.snackbar.open(`Action failed - please submit a value.`);
            return;
         }
-        this.post.amount = parseFloat(this.post.amount).toFixed(2);
-        this.post.amount = parseFloat(this.convertToDollars()).toFixed(2);
-        if(this.post.amount === undefined || this.post.amount === null){
+        this.transaction.amount = parseFloat(this.transaction.amount).toFixed(2);
+        this.transaction.amount = parseFloat(this.convertToCAD()).toFixed(2);
+        if(this.transaction.amount === undefined || this.transaction.amount === null){
           this.$buefy.snackbar.open(`Action failed - please submit a value.`);
            return;
-        }else if(parseFloat(this.post.amount) < 10){
+        }else if(parseFloat(this.transaction.amount) < 10){
           this.$buefy.snackbar.open(`Action failed - the minum deposit value is $10.`);
            return;
-        } else if(this.posts.length === 0){
-          this.post.balanceAfter = parseFloat(this.post.amount).toFixed(2);
+        } else if(this.transactions.length === 0){
+          this.transaction.balanceAfter = parseFloat(this.transaction.amount).toFixed(2);
         }else{
-          this.post.balanceAfter = (parseFloat(this.posts[this.posts.length-1].balanceAfter) + parseFloat(this.post.amount)).toFixed(2);
+          this.transaction.balanceAfter = (parseFloat(this.transactions[this.transactions.length-1].balanceAfter) + parseFloat(this.transaction.amount)).toFixed(2);
         }
-        let uri = 'http://localhost:4000/posts/add';
-        this.axios.post(uri, this.post).then(() => {
+        let uri = 'http://localhost:4000/transactions/add';
+        this.axios.post(uri, this.transaction).then(() => {
           this.$router.push({name: 'homePage'});
           console.log("successful transaction");
         });
       },
-     convertToDollars(){
-        if(this.currencyType==="$CAD")
-          return this.post.amount * 1.00; 
+     convertToCAD(){
+        if(this.currency==="$CAD")
+          return this.transaction.amount * 1.00; 
           else if (this.currency==="$USD")
-          return this.post.amount * 0.70;
+          return this.transaction.amount * 1.4203557;
           else if (this.currency==="€EURO")
-          return this.post.amount * 0.65;
+          return this.transaction.amount * 1.535115;
           else if (this.currency==="£GBP")
-          return this.post.amount * 0.57;
+          return this.transaction.amount * 1.741817;
           else if (this.currency==="¥JPY")
-          return this.post.amount * 75.35;
+          return this.transaction.amount * 0.013094;
+          else 
+          return this.transaction.amount;
       }
     }
   }

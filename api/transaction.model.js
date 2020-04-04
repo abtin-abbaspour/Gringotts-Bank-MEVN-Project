@@ -43,8 +43,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define collection and schema for Post
-let Post = new Schema({
+// Define collection and schema for Transaction
+let Transaction = new Schema({
   amount: {
     type: String
   },
@@ -61,7 +61,7 @@ let Post = new Schema({
     type: String
   }
 },{
-    collection: 'posts'
+    collection: 'transactions'
 });
 
-module.exports = mongoose.model('Post', Post);
+module.exports = mongoose.model('Transaction', Transaction);
