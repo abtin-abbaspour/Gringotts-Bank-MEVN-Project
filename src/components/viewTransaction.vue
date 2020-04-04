@@ -29,13 +29,14 @@
     </div>
     <hr>
     <img src="https://www.cdic.ca/wp-content/uploads/cdic-bank-door-decal-en.png" id = "image" alt="CDIC Logo cannot be displayed.">
-    <div class="tile is-vertical is-15" id = "tile">
-      <div class="tile">
-        <div class="tile is-parent is-vertical">
-          <article class="tile is-child notification is-info">
+              <img src="https://www.laurentianbank.ca/sn_uploads/fck/SADC/SADC-web_1_EN.jpg" id = "image" alt="CDIC Logo cannot be displayed.">
+           <article class="tile is-child notification is-info">
             <p class="title">What is CDIC?</p>
             <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category.</p>
           </article>
+    <div class="tile is-vertical is-15" id = "tile">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
         </div>
       </div>
     </div>
