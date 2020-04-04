@@ -16,7 +16,7 @@
 			</b-tooltip>
 			<br>
 			<p class="card-header-title"></p>
-			<b-message title="Financial Advisor" type="is-success" aria-close-label="Close message">
+			<b-message title="Questions?" type="is-success" aria-close-label="Close message">
 				Financial Advisor: <a @click.prevent='financialAdvisor()'>Batjon Sinaj 647-767-8930 EXT.342</a><br>
 				Exchange Rate Expert: <a @click.prevent='exchangeRate()'>Ben Merbaum 647-899-1766 EXT.283</a><br>
 				Technological Expert: <a @click.prevent='technologicalExpert()'>Abtin Abbaspour 647-127-8803 EXT.193</a>
@@ -25,7 +25,8 @@
 				Click on "View Details" on any transaction to view its specifics.
 			</b-message>
 			<b-message title="Contact Us" type="is-dark" aria-close-label="Close message">
-				Meet with us at one our nearest locations, or reach us by phone or email. <br>We will redirect you to your nearest bank as soon as possible. 
+				Meet with us at one our nearest locations. Our phone number is 416-785-7383.
+				<br>
 			</b-message>
 			<br><br>
 		</div>
