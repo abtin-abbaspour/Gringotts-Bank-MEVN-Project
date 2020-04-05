@@ -29,18 +29,11 @@
     </div>
     <hr>
     <img src="https://www.cdic.ca/wp-content/uploads/cdic-bank-door-decal-en.png" id = "image" alt="CDIC Logo cannot be displayed.">
-              <img src="https://www.laurentianbank.ca/sn_uploads/fck/SADC/SADC-web_1_EN.jpg" id = "image" alt="CDIC Logo cannot be displayed.">
-           <article class="tile is-child notification is-info">
-            <p class="title">What is CDIC?</p>
-            <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/"> CDIC.com </a></p>
-          </article>
-    <div class="tile is-vertical is-15" id = "tile">
-      <div class="tile">
-        <div class="tile is-parent is-vertical">
-        </div>
-      </div>
-    </div>
-    <br><br>
+    <img src="https://www.laurentianbank.ca/sn_uploads/fck/SADC/SADC-web_1_EN.jpg" id = "image2" alt="CDIC Logo cannot be displayed.">
+    <article class="tile is-child notification is-info">
+      <p class="title">What is CDIC?</p>
+      <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/"> CDIC.com </a></p>
+    </article>
   </section>
 </template>
 <script>
@@ -67,19 +60,20 @@ export default {
     font-size: 50px;
     font-weight: bold;
     text-align: center;
-    margin-right: 180px;
+    margin-right: 140px;
   }
   #homebutton{
     float:left;
     margin-left: 35px;
   }
   #image{
-    height:200px;
-    margin-left: 40px;
+    width: 500px;
+    margin-left: 70px;
   }
-  #tile{
-    margin-right:30px;
+  #image2{
+    margin-top:10px;
+    margin-right:60px;
     float:right;
-    width: 920px;
+    width: 700px;
   }
 </style>

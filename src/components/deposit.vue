@@ -14,13 +14,11 @@
       <b-message title="" type="is-black" aria-close-label="Close message" class = "bank">
         Deposit will appear instanly in bank records.
       </b-message>
-      <b-field
-            label="From Account:"
-            message="">
-            <b-select placeholder="Select Account.">
-                <option value="">Current Account</option>
-            </b-select>
-        </b-field>
+      <b-field label="From Account:">
+        <b-select placeholder="Select Account.">
+          <option>Current Account</option>
+        </b-select>
+      </b-field>
       <b-field label = "Currency:">
         <b-select v-model = "currency" placeholder="Currency">
           <option value = "$CAD">$CAD</option>

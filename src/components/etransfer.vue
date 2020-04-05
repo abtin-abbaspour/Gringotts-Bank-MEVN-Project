@@ -12,11 +12,11 @@
         NOTE: Transaction may change depending on your currency choice.    
       </b-message>
       <br>
-    <b-field
+        <b-field
             label="From Account:"
-            message="">
+            >
             <b-select placeholder="Select Account.">
-                <option value="">Current Account</option>
+                <option>Current Account</option>
             </b-select>
         </b-field>
       <b-field >

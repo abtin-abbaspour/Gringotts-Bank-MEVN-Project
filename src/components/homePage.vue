@@ -25,15 +25,14 @@
 				Click on "View Details" on any transaction to view its specifics.
 			</b-message>
 			<b-message title="Contact Us" type="is-second has-background-first" aria-close-label="Close message">
-				Meet with us at one our nearest locations. Our phone number is 416-785-7383. 
-				Our email is <a @click.prevent='Email()'>banking@Gringnotts.com.</a>
-				We are available from 9 to 6.
+				Meet with us at one our nearest locations. Our phone number is <br>416-785-7383. 
+				Our email is <a @click.prevent='Email()'>banking@gringotts.com.</a>
+				Our working hours are from 9am to 6pm Monday-Saturday.
 			</b-message>
-			<br><br>
 		</div>
 		<div class = "column">
 			<b-button type="is-second" size = "is-large" expanded>Transactions List</b-button>
-			<table class="table table-hover has-text-white has-background-first" style="width: 900px">
+			<table class="table table-hover has-text-white has-background-first" style="width: 780px">
 				<thead>
 					<tr>
 						<th class="has-text-white">Transaction Type</th>
@@ -102,9 +101,9 @@ export default {
 		},
 		Email() {
             this.$buefy.dialog.prompt({
-                message: `List your email address below and we will send you email momentarily.`,
+                message: `List your email address below and we will send you an email momentarily.`,
                 trapFocus: true,
-                onConfirm: (value) => this.$buefy.toast.open(`Thank you, you should be checking your email now.`)
+                onConfirm: (value) => this.$buefy.toast.open(`Thank you, you will receive an email soon.`)
             })
         },
         technologicalExpert() {
@@ -126,9 +125,9 @@ export default {
 		margin-right: 8px;
 	}
 	.myButton{
-		margin:10px 43px;
+		margin:10px 13px;
 	}
 	th{
-		width:180px;
+		width:100px;
 	}
 </style>

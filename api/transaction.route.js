@@ -49,7 +49,6 @@ transactionRoutes.route('/update/:id').post(function (req, res) {
         transaction.transactionType = req.body.transactionType;
         transaction.eTransferTo = req.body.eTransferTo;
         transaction.date = req.body.date;
-        transaction.time =req.body.time;
         transaction.balanceAfter = req.body.balanceAfter;
         transaction.save().then(() => {
           res.json('Update complete');
