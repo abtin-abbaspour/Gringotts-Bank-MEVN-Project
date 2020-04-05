@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class = "columns">
     <div class = "column">
       <p class="title is-0.5" text-align = "middle">Deposit Money</p>
@@ -40,7 +41,6 @@
       </b-field>
       </b-field>
       </form>
-      <br>
     </div>
     <div class = "column">
       <div class="tile is-ancestor">
@@ -48,8 +48,8 @@
           <div class="tile">
             <div class="tile is-parent is-vertical">
               <article class="tile is-child notification is-primary">
-                <p class="title">Deposit</p>
-                <p class="subtitle">Put money from your digital wallet into your bank records.</p>
+                <p class="title">Deposit</p><br>
+                <p class="subtitle">Transfer money from your digital wallet into your online bank records.</p>
               </article>
               <article class="tile is-child notification is-warning">
                 <p class="title">Questions?</p>
@@ -72,6 +72,14 @@
       </div>
     </div>
   </div>
+  <hr>
+    <img src="https://www.cdic.ca/wp-content/uploads/cdic-bank-door-decal-en.png" id = "image" alt="CDIC Logo cannot be displayed.">
+    <img src="https://www.laurentianbank.ca/sn_uploads/fck/SADC/SADC-web_1_EN.jpg" id = "image2" alt="CDIC Logo cannot be displayed.">
+    <article class="tile is-child notification is-info">
+      <p class="title">What is CDIC?</p>
+      <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/" target="_blank"> CDIC.com </a></p>
+    </article>
+</div>
 </template>
 
 <script>
@@ -160,4 +168,15 @@ export default {
 .withdrawl{
   width:365px;
 }
+#image{
+  width: 500px;
+   margin-left: 70px;
+}
+#image2{
+   margin-top:10px;
+   margin-right:60px;
+   float:right;
+   width: 700px;
+}
+
 </style>

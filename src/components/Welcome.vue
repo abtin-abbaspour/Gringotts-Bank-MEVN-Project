@@ -92,7 +92,7 @@
                 pauseHover: true,
                 pauseInfo: true,
                 pauseType: 'is-third',
-                interval: 2500,
+                interval: 2200,
                 carousels: [
                 { text: 'Welcome to Gringotts Banking Corporation!', color: 'first' },
                 { text: 'Press "Home" to view your balance and previous transactions.', color: 'second' },
