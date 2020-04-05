@@ -25,8 +25,9 @@
 				Click on "View Details" on any transaction to view its specifics.
 			</b-message>
 			<b-message title="Contact Us" type="is-dark" aria-close-label="Close message">
-				Meet with us at one our nearest locations. Our phone number is 416-785-7383.
-				<br>
+				Meet with us at one our nearest locations. Our phone number is 416-785-7383. 
+				Our email is <a @click.prevent='Email()'>banking@Gringnotts.com.</a>
+				We are available from 9 to 6.
 			</b-message>
 			<br><br>
 		</div>
@@ -97,6 +98,13 @@ export default {
                 message: `What would you like to know about the exchange rate process today?`,
                 trapFocus: true,
                 onConfirm: (value) => this.$buefy.toast.open(`Thank you for your feedback!`)
+            })
+		},
+		Email() {
+            this.$buefy.dialog.prompt({
+                message: `List your email address below and we will send you email momentarily.`,
+                trapFocus: true,
+                onConfirm: (value) => this.$buefy.toast.open(`Thank you, you should be checking your email now.`)
             })
         },
         technologicalExpert() {

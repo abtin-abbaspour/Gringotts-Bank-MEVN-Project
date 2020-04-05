@@ -12,6 +12,13 @@
         NOTE: Transaction may change depending on your currency choice.    
       </b-message>
       <br>
+    <b-field
+            label="From Account:"
+            message="">
+            <b-select placeholder="Select Account.">
+                <option value="">Current Account</option>
+            </b-select>
+        </b-field>
       <b-field >
         <b-input v-model = "transaction.eTransferTo"
           placeholder = "Send Money To: "
