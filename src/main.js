@@ -15,7 +15,7 @@ Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
 
-import Welcome from './components/welcome.vue';
+import Welcome from './components/Welcome.vue';
 import HomePage from './components/homePage.vue';
 import Viewer from './components/viewTransaction.vue';
 import Deposit from './components/deposit.vue';
