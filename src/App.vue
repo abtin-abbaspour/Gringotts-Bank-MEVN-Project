@@ -1,6 +1,5 @@
 <template>
     <div>
-        <title>Hello</title>
         <b-navbar class="is-second navbar">
             <template slot="brand">
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">
@@ -100,7 +99,8 @@ $navbar-item-img-max-height: 3rem !important;
 
 body {
   background-color: #f7e79c;
-  background-size: cover;
+  background-size: 100%;
+  height: 1200px;
 }
 
 </style>
