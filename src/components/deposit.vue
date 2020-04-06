@@ -3,24 +3,24 @@
   <div class = "columns">
     <div class = "column">
       <p class="title is-0.5" text-align = "middle">Deposit Money</p>
-      <b-message title="" type="is-danger" aria-close-label="Close message" class = "currency">
+      <b-message title="" type="is-second has-background-warning" aria-close-label="Close message" class = "currency">
         Currency will be dependent on what country you are in.
       </b-message>
-      <b-message title="" type="is-success" aria-close-label="Close message"  class = "withdraw">
+      <b-message title="" type="is-second has-background-warning" aria-close-label="Close message"  class = "withdraw">
         Select the amount you would like to deposit into your account.
       </b-message>
-      <b-message title="" type="is-info" aria-close-label="Close message" class = "withdrawl">
+      <b-message title="" type="is-second has-background-warning" aria-close-label="Close message" class = "withdrawl">
         Deposit amount must be more than $10.
       </b-message>
-      <b-message title="" type="is-black" aria-close-label="Close message" class = "bank">
+      <b-message title="" type="is-second has-background-warning" aria-close-label="Close message" class = "bank">
         Deposit will appear instanly in bank records.
       </b-message>
-      <b-field label="From Account:">
+      <b-field label="From Account:" type="is-second">
         <b-select placeholder="Select Account.">
           <option>Current Account</option>
         </b-select>
       </b-field>
-      <b-field label = "Currency:">
+      <b-field label = "Currency:" type="is-second">
         <b-select v-model = "currency" placeholder="Currency">
           <option value = "$CAD">$CAD</option>
           <option value = "$USD">$USD</option>
@@ -29,33 +29,29 @@
           <option value = "¥JPY">¥JPY</option>
         </b-select>
       </b-field>
-      <b-field label = "Amount:">
+      <b-field label = "Amount:" type="is-second">
         <b-input v-model = "transaction.amount" type="number" step = "0.01" placeholder="$" class= "box">
         </b-input>
       </b-field>
       <br>
       <p class="control">
-        <button class="button is-success" @click.prevent="deposit()">Deposit</button>
+        <button class="button is-second" @click.prevent="deposit()">Deposit</button>
       </p>
-      </b-select>
-      </b-field>
-      </b-field>
-      </form>
     </div>
     <div class = "column">
       <div class="tile is-ancestor">
         <div class="tile is-vertical is-10">
           <div class="tile">
             <div class="tile is-parent is-vertical">
-              <article class="tile is-child notification is-primary">
+              <article class="tile is-child notification is-second">
                 <p class="title">Deposit</p><br>
                 <p class="subtitle">Transfer money from your digital wallet into your online bank records.</p>
               </article>
-              <article class="tile is-child notification is-warning">
+              <article class="tile is-child notification is-first">
                 <p class="title">Questions?</p>
                 Consult with our finance expert <a @click.prevent='financialAdvisor()'>Batjon Sinaj.</a><br>
               </article>
-              <article class="tile is-child notification is-success">
+              <article class="tile is-child notification is-warning">
                 <div class="content">
                   <p class="title">Exchange Rates</p>
                   <br>
@@ -75,7 +71,7 @@
   <hr>
     <img src="https://www.cdic.ca/wp-content/uploads/cdic-bank-door-decal-en.png" id = "image" alt="CDIC Logo cannot be displayed.">
     <img src="https://www.laurentianbank.ca/sn_uploads/fck/SADC/SADC-web_1_EN.jpg" id = "image2" alt="CDIC Logo cannot be displayed.">
-    <article class="tile is-child notification is-info">
+    <article class="tile is-child notification is-first">
       <p class="title">What is CDIC?</p>
       <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/" target="_blank"> CDIC.com </a></p>
     </article>

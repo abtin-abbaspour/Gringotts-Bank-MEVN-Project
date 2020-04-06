@@ -3,28 +3,28 @@
   <div class = "columns">
     <div class = "column">
       <p class="title is-0.5" text-align = "middle">E-Transfer Money</p>
-      <b-message type="is-danger" aria-close-label="Close message" class = "email">
+      <b-message type="is-second has-background-warning" aria-close-label="Close message" class = "email">
         Gringotts sends a notice to the email address you provide within 5 minutes.
       </b-message>
-      <b-message type="is-success" aria-close-label="Close message" class = "square">
+      <b-message type="is-second has-background-warning" aria-close-label="Close message" class = "square">
         The transfer amount must be greater than $1.
       </b-message>
-      <b-message type="is-black" aria-close-label="Close message" class = "forex">
+      <b-message type="is-second has-background-warning" aria-close-label="Close message" class = "forex">
         NOTE: Transaction may change depending on your currency choice.    
       </b-message>
       <br>
-      <b-field label="From Account:">
+      <b-field label="From Account:" type="is-second">
         <b-select placeholder="Select Account.">
           <option>Current Account</option>
         </b-select>
       </b-field>
-      <b-field >
+      <b-field type="is-second">
         <b-input v-model = "transaction.eTransferTo"
           placeholder = "Send Money To: "
           class="box">            
         </b-input>
       </b-field>
-      <b-field label = "Currency:">
+      <b-field label = "Currency:" type="is-second">
         <b-select v-model = "currency" placeholder="Currency">
           <option value = "$CAD">$CAD</option>
           <option value = "$USD">$USD</option>
@@ -33,14 +33,13 @@
           <option value = "¥JPY">¥JPY</option>
         </b-select>
       </b-field>
-      <b-field label = "Amount:">
+      <b-field label = "Amount:" type="is-second">
         <b-input v-model = "transaction.amount" type="number" step = "0.01" placeholder="$" class="box">            
         </b-input>
-        </b-select>
       </b-field>
       <br>
       <p class="control">
-        <button class="button is-success" @click.prevent="eTransfer()">ETransfer</button>
+        <button class="button is-second" @click.prevent="eTransfer()">ETransfer</button>
       </p>
     </div>
     <div class = "column">
@@ -48,15 +47,15 @@
         <div class="tile is-vertical is-10">
           <div class="tile">
             <div class="tile is-parent is-vertical">
-              <article class="tile is-child notification is-primary">
+              <article class="tile is-child notification is-second">
                 <p class="title">E-Transfer</p><br>
                 <p class="subtitle">Here you can send money to contacts.</p>
               </article>
-              <article class="tile is-child notification is-warning">
+              <article class="tile is-child notification is-first">
                 <p class="title">Questions?</p>
                 Contact our exchange rate expert <a @click.prevent='exchangeRate()'>Ben Merbaum.</a><br>
               </article>
-              <article class="tile is-child notification is-success">
+              <article class="tile is-child notification is-warning">
                 <div class="content">
                   <p class="title">Exchange Rates</p>
                   <br>
@@ -76,7 +75,7 @@
   <hr>
     <img src="https://www.cdic.ca/wp-content/uploads/cdic-bank-door-decal-en.png" id = "image" alt="CDIC Logo cannot be displayed.">
     <img src="https://www.laurentianbank.ca/sn_uploads/fck/SADC/SADC-web_1_EN.jpg" id = "image2" alt="CDIC Logo cannot be displayed.">
-    <article class="tile is-child notification is-info">
+    <article class="tile is-child notification is-first">
       <p class="title">What is CDIC?</p>
       <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/" target="_blank"> CDIC.com </a></p>
     </article>
