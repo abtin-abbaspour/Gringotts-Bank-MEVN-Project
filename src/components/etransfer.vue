@@ -3,15 +3,13 @@
   <div class = "columns">
     <div class = "column">
       <p class="title is-0.5" text-align = "middle">E-Transfer Money</p>
-      <b-message type="is-second has-background-warning" aria-close-label="Close message" class = "email">
-        Gringotts sends a notice to the email address you provide within 5 minutes.
-      </b-message>
-      <b-message type="is-second has-background-warning" aria-close-label="Close message" class = "square">
-        The transfer amount must be greater than $1.
-      </b-message>
-      <b-message type="is-second has-background-warning" aria-close-label="Close message" class = "forex">
-        NOTE: Transaction may change depending on your currency choice.    
-      </b-message>
+      <article class="tile is-child notification is-warning">
+                <div class="content">
+                  <p class="subtitle">- Gringotts sends a notice to the email address you provide within 5 minutes.</p>
+                  <p class="subtitle">- The transfer amount must be greater than $1.</p>
+                  <p class="subtitle">- NOTE: Transaction may change depending on your currency choice.</p>
+                </div>
+              </article>
       <br>
       <b-field label="From Account:" type="is-second">
         <b-select placeholder="Select Account.">

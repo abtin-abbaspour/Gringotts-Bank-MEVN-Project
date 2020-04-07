@@ -3,18 +3,14 @@
   <div class = "columns">
     <div class = "column">
       <p class="title is-0.5" text-align = "middle">Deposit Money</p>
-      <b-message title="" type="is-second has-background-warning" aria-close-label="Close message" class = "currency">
-        Currency will be dependent on what country you are in.
-      </b-message>
-      <b-message title="" type="is-second has-background-warning" aria-close-label="Close message"  class = "withdraw">
-        Select the amount you would like to deposit into your account.
-      </b-message>
-      <b-message title="" type="is-second has-background-warning" aria-close-label="Close message" class = "withdrawl">
-        Deposit amount must be more than $10.
-      </b-message>
-      <b-message title="" type="is-second has-background-warning" aria-close-label="Close message" class = "bank">
-        Deposit will appear instanly in bank records.
-      </b-message>
+      <article class="tile is-child notification is-warning">
+                <div class="content">
+                  <p class="subtitle"> - Currency will be dependent on what country you are in.</p>
+                  <p class="subtitle"> - Select the amount you would like to deposit into your account.</p>
+                  <p class="subtitle"> - Deposit amount must be more than $10.</p>
+                  <p class="subtitle"> - Deposit will appear instanly in bank records. </p>
+                </div>
+              </article>
       <b-field label="From Account:" type="is-second">
         <b-select placeholder="Select Account.">
           <option>Current Account</option>
