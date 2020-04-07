@@ -2,12 +2,12 @@
 <div>
   <div class = "columns">
     <div class = "column">
-      <p class="title is-0.5" text-align = "middle">E-Transfer Money</p>
+      <p class="title is-0.5" text-align = "middle">E-Transfer Balance</p>
       <article class="tile is-child notification is-warning">
                 <div class="content">
-                  <p class="subtitle">- Gringotts sends a notice to the email address you provide within 5 minutes.</p>
-                  <p class="subtitle">- The transfer amount must be greater than $1.</p>
-                  <p class="subtitle">- NOTE: Transaction may change depending on your currency choice.</p>
+                  <p class="body">- Gringotts sends a notice to the email address you provide within 5 minutes.</p>
+                  <p class="body">- The transfer amount must be greater than $10.</p>
+                  <p class="body">- <strong>NOTE:</strong> Transaction may change depending on your currency choice.</p>
                 </div>
               </article>
       <br>
@@ -47,7 +47,7 @@
             <div class="tile is-parent is-vertical">
               <article class="tile is-child notification is-second">
                 <p class="title">E-Transfer</p><br>
-                <p class="subtitle">Here you can send money to contacts.</p>
+                Transfer your virtual balance to your contacts.
               </article>
               <article class="tile is-child notification is-first">
                 <p class="title">Questions?</p>
@@ -152,17 +152,8 @@ export default {
 </script>
 
 <style>
-.email{
-  width: 600px;
-}
 .box{
   width: 310px;
-}
-.square{
-  width: 405px;
-}
-.forex{
-  width:600px;
 }
 
 #image{

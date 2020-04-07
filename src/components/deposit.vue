@@ -2,15 +2,16 @@
 <div>
   <div class = "columns">
     <div class = "column">
-      <p class="title is-0.5" text-align = "middle">Deposit Money</p>
+      <p class="title is-0.5" text-align = "middle">Deposit Balance</p>
       <article class="tile is-child notification is-warning">
                 <div class="content">
-                  <p class="subtitle"> - Currency will be dependent on what country you are in.</p>
-                  <p class="subtitle"> - Select the amount you would like to deposit into your account.</p>
-                  <p class="subtitle"> - Deposit amount must be more than $10.</p>
-                  <p class="subtitle"> - Deposit will appear instanly in bank records. </p>
+                  <p class="body">- Currency will be dependent on what country you are in.</p>
+                  <p class="body">- Select the amount you would like to deposit into your account.</p>
+                  <p class="body">- Deposit amount must be more than $10.</p>
+                  <p class="body">- Deposit will appear instanly in bank records. </p>
                 </div>
               </article>
+              <br>
       <b-field label="From Account:" type="is-second">
         <b-select placeholder="Select Account.">
           <option>Current Account</option>
@@ -41,7 +42,7 @@
             <div class="tile is-parent is-vertical">
               <article class="tile is-child notification is-second">
                 <p class="title">Deposit</p><br>
-                <p class="subtitle">Transfer money from your digital wallet into your online bank records.</p>
+                Transfer balance virtually from your digital wallet into your online bank records.
               </article>
               <article class="tile is-child notification is-first">
                 <p class="title">Questions?</p>
@@ -145,20 +146,9 @@ export default {
 </script>
 
 <style>
-.currency{
-  width:300px;
-}
-.withdraw{
-  width:350px;
-}
-.bank{
-  width:405px;
-}
+
 .box{
   width: 100px;
-}
-.withdrawl{
-  width:365px;
 }
 #image{
   width: 500px;

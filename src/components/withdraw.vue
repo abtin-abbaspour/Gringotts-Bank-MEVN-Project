@@ -2,15 +2,16 @@
   <div>
    <div class = "columns">
       <div class = "column">
-         <p class="title is-0.5" text-align = "middle">Withdraw Amount</p>
+         <p class="title is-0.5" text-align = "middle">Withdraw Balance</p>
          <article class="tile is-child notification is-warning">
                 <div class="content">
-                  <p class="subtitle">- Currency will be dependent on what country you are in.</p>
-                  <p class="subtitle">- Select the amount you would like to withdraw.</p>
-                  <p class="subtitle">- Withdraw amount must be more than $10.</p>
-                  <p class="subtitle">- Withdraw will instanly appear in bank records.</p>
+                  <p class="body">- Currency will be dependent on what country you are in.</p>
+                  <p class="body">- Select the amount you would like to withdraw.</p>
+                  <p class="body">- Withdraw amount must be more than $10.</p>
+                  <p class="body">- Withdraw will instanly appear in bank records.</p>
                 </div>
               </article>
+              <br>
          <b-field label="From Account:" type="is-second">
             <b-select placeholder="Select Account.">
                <option>Current Account</option>
@@ -41,10 +42,10 @@
                   <div class="tile is-parent is-vertical">
                      <article class="tile is-child notification is-second">
                         <p class="title">Withdraw</p><br>
-                        <p class="subtitle">Remove the money from your chequing account and place it in your digital wallet.</p>
+                        Withdraw balance from your chequing account and place it in your digital wallet.
                      </article>
                      <article class="tile is-child notification is-first">
-                        <p class="title">Questions</p>
+                        <p class="title">Questions?</p>
                         Contact our technology expert <a @click.prevent='technologicalExpert()'>Abtin Abbaspour.</a>
                      </article>
                      <article class="tile is-child notification is-warning">
@@ -145,21 +146,6 @@ export default {
 </script>
 
 <style>
-.currency{
-  width:450px;
-}
-.withdraw{
-  width:350px;
-}
-.bank{
-  width:405px;
-}
-.box{
-  width: 100px;
-}
-.withdrawal{
-  width:365px;
-}
 #image{
   width: 500px;
    margin-left: 70px;
