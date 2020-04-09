@@ -8,7 +8,7 @@ the right consists of a list of transactions imported from the DB, similar to th
 			<b-button type = "is-first" size = "is-large" v-if="transactions.length===0" expanded>$0.00 CAD</b-button><!-- if no balance, $0.00 displayed here instead-->
 			<br><br>   		
 			<b-tooltip label = "Withdraw some of your balance" type="is-warning">
-				<b-button class = "myButton" type="is-second" style="margin-left: 50px" size = "is-large" @click.prevent="withdraw()">Withdraw</b-button>
+				<b-button class = "myButton" type="is-second" size = "is-large" @click.prevent="withdraw()">Withdraw</b-button>
 			</b-tooltip>
 			<b-tooltip label = "Deposit some of your balance" type="is-warning">
 				<b-button class = "myButton" type="is-second" size = "is-large" @click.prevent="deposit()">Deposit</b-button>

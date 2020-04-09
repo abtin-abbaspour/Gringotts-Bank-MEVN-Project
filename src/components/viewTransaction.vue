@@ -4,27 +4,27 @@
     <br>
     <b-button tag="router-link"
       to="/homePage"
-      type="is-link" size = "is-large" id = "homebutton">
+      type="is-second" size = "is-large" id = "homebutton">
       <strong> Home</strong> 
     </b-button>
     <p id = "title">Transaction Details</p>
     <br><br>
     <div class = "columns">
       <div class = "column">
-        <b-message title="Transaction Type" type = "is-info" size = "is-medium" aria-close-label="Close message">
+        <b-message title="Transaction Type" type = "is-second has-background-first" size = "is-medium" aria-close-label="Close message">
           <!--Only if this is an e-transfer, you can view who the transaction was to-->
           <p v-if = 'transaction.eTransferTo !== ""'>This transaction was an {{transaction.transactionType}} to {{transaction.eTransferTo}}. </p>
           <p v-else>This transaction was a {{transaction.transactionType}}.</p>
         </b-message>
-        <b-message title="Amount" type="is-success" size = "is-medium" aria-close-label="Close message">
+        <b-message title="Amount" type="is-second has-background-first" size = "is-medium" aria-close-label="Close message">
           The amount of money involved in this transaction was ${{transaction.amount}} CAD.
         </b-message>
       </div>
       <div class = "column">
-        <b-message title="Date" type="is-warning" size = "is-medium" aria-close-label="Close message">
+        <b-message title="Date" type="is-second has-background-first" size = "is-medium" aria-close-label="Close message">
           This transaction was conducted on {{transaction.date}}.
         </b-message>
-        <b-message title="Remaining Balance" type="is-danger" size = "is-medium" aria-close-label="Close message">
+        <b-message title="Remaining Balance" type="is-second has-background-first" size = "is-medium" aria-close-label="Close message">
           Following this transaction, you had ${{transaction.balanceAfter}} CAD balance remaining.
         </b-message>
       </div>
