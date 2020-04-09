@@ -1,3 +1,4 @@
+<!-- Simple deposit page, users can deposit money of any currency. Once they do so, this is added to the DB as a transaction. -->
 <template>
 <div>
   <div class = "columns">
@@ -102,7 +103,7 @@ export default {
                 onConfirm: (value) => this.$buefy.toast.open(`Thanks, we'll get back to you as soon as possible!`)
             })
         },
-        deposit() {
+        deposit() {//1. check that there was specified amount, 2. format it and convert currency, 3. make sure at least $10, 4. figure out balanceAfter and then add it as a transaction, go to the home page
             if (this.transaction.amount === undefined || this.transaction.amount === null) {
                 this.$buefy.snackbar.open(`Action failed - please submit a value.`);
                 return;
@@ -127,7 +128,7 @@ export default {
                 });
             });
         },
-        convertToCAD() {
+        convertToCAD() {//converting any currency's amount to CAD
             if (this.currency === "$CAD")
                 return this.transaction.amount * 1.00;
             else if (this.currency === "$USD")

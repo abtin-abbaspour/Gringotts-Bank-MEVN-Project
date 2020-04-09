@@ -1,3 +1,5 @@
+<!-- App.vue buefy navbar of all tabs-->
+<!-- Preloading colour type settings-->
 <template>
     <div>
         <b-navbar class="is-second navbar">
@@ -48,7 +50,6 @@ $second: #482e06;
 $second-invert: findColorInvert($second);
 $third: #f7e79c;
 $third-invert: findColorInvert($third);
-
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
   "white": ($white, $black),
@@ -118,7 +119,7 @@ export default {
             });
       },
     methods: {
-        reset(){
+        reset(){//grab the id's of all transactions and delete them from DB, this leaves no items so no balanceAfter and no balance in bank
             for(var t of this.transactions){
                 let uri = `http://localhost:4000/transactions/delete/`+t._id;
                 this.axios.delete(uri).then(response => {

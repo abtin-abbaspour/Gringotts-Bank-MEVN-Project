@@ -1,3 +1,4 @@
+<!-- E-transfer page, same as deposit but input a saved name (eTransferTo) for who the e-Transfer is sent to -->
 <template>
 <div>
   <div class = "columns">
@@ -107,7 +108,7 @@ export default {
                 onConfirm: (value) => this.$buefy.toast.open(`Thank you, we'll get back to you as soon as possible!!`)
             })
         },
-        eTransfer() {
+        eTransfer() {//1. check that there was specified amount, 2. format it and convert currency, 3. make sure you have the money to do so and at least $10, 4. figure out balanceAfter and then add it as a transaction, go to the home page
             if (this.transaction.amount === undefined || this.transaction.amount === null) {
                 this.$buefy.snackbar.open(`Action failed - please submit a value.`);
                 return;

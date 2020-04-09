@@ -1,3 +1,4 @@
+<!--Information about transaction: type of transaction, the amount involved, the date of transaction, and the balance after -->
 <template>
   <section>
     <br>
@@ -11,6 +12,7 @@
     <div class = "columns">
       <div class = "column">
         <b-message title="Transaction Type" type = "is-info" size = "is-medium" aria-close-label="Close message">
+          <!--Only if this is an e-transfer, you can view who the transaction was to-->
           <p v-if = 'transaction.eTransferTo !== ""'>This transaction was an {{transaction.transactionType}} to {{transaction.eTransferTo}}. </p>
           <p v-else>This transaction was a {{transaction.transactionType}}.</p>
         </b-message>
@@ -32,7 +34,7 @@
     <img src="https://www.laurentianbank.ca/sn_uploads/fck/SADC/SADC-web_1_EN.jpg" id = "image2" alt="CDIC Logo cannot be displayed.">
     <article class="tile is-child notification is-info">
       <p class="title">What is CDIC?</p>
-      <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/" target="_blank"> CDIC.com </a></p>
+      <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/" target="_blank"> CDIC.com </a></p><!-- target = _blank makes it open the hyperlink into a different google tab for easier viewing-->
     </article>
   </section>
 </template>

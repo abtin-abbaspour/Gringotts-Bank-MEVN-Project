@@ -1,6 +1,12 @@
 const express = require('express');
 const transactionRoutes = express.Router();
 
+/*
+We were able to reuse all the same postRoutes methods without altering anything - there was 
+no need to change or add any methods as the previously listed ones provide complete functionality
+for deleting, adding, and getting transactions
+*/
+
 // Require Transaction model in our routes module
 let Transaction = require('./transaction.model');
 
