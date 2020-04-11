@@ -25,11 +25,7 @@
       </b-field>
       <b-field label = "Currency:" type="is-second">
         <b-select v-model = "currency" placeholder="Currency">
-          <option value = "$CAD">$CAD</option>
-          <option value = "$USD">$USD</option>
-          <option value = "€EURO">€EURO</option>
-          <option value = "£GBP">£GBP</option>
-          <option value = "¥JPY">¥JPY</option>
+          <option v-for="curr in currencies" :key="curr._id" :value = "curr.name">{{curr.name}}</option>
         </b-select>
       </b-field>
       <b-field label = "Amount:" type="is-second">
@@ -58,11 +54,7 @@
                 <div class="content">
                   <p class="title">Exchange Rates</p>
                   <br>
-                  <p class="subtitle">$CAD/$CAD = 1.00 </p>
-                  <p class="subtitle">$USD/$CAD = 1.4203557 </p>
-                  <p class="subtitle">€EURO/$CAD = 1.535115</p>
-                  <p class="subtitle">£GBP/$CAD = 1.741817 </p>
-                  <p class="subtitle">¥JPY/$CAD = 0.013094</p>
+                  <p class="subtitle" v-for="curr in currencies" :key="curr._id">{{curr.name}} - $CAD = {{curr.value}} </p>
                 </div>
               </article>
             </div>
@@ -91,13 +83,19 @@ export default {
                 eTransferTo: "",
                 date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()
             },
-            currency: "$CAD"
+            currency: "$CAD",
+            currencies: []
         }
     },
     created() {
         let uri = 'http://localhost:4000/transactions';
         this.axios.get(uri).then(response => {
             this.transactions = response.data;
+        });
+
+        uri = 'http://localhost:4000/currencies/';
+        this.axios.get(uri).then(response => {
+            this.currencies = response.data;
         });
     },
     methods: {
@@ -135,18 +133,11 @@ export default {
             }
         },
         convertToCAD() {
-            if (this.currency === "$CAD")
-                return this.transaction.amount * 1.00;
-            else if (this.currency === "$USD")
-                return this.transaction.amount * 1.4203557;
-            else if (this.currency === "€EURO")
-                return this.transaction.amount * 1.535115;
-            else if (this.currency === "£GBP")
-                return this.transaction.amount * 1.741817;
-            else if (this.currency === "¥JPY")
-                return this.transaction.amount * 0.013094;
-            else
-                return this.transaction.amount;
+          for(var c of this.currencies){
+            if(this.currency === c.name)
+              return this.transaction.amount * c.value;
+          }
+          throw "Could not find specified currency: " + this.currency;
         }
     }
 }

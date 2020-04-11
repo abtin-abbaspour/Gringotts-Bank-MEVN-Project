@@ -1,0 +1,9 @@
+{
+	"currencies":[
+		{ "name":"$CAD", "value":1.00 },
+        { "name":"$USD", "value":1.4203557 },
+        { "name":"€EURO", "value":1.535115 },
+        { "name":"£GBP", "value":1.741817 },
+        { "name":"¥JPY", "value":0.013094 }
+	]
+}

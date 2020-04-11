@@ -112,12 +112,18 @@ export default {
         return {
             transactions: []
         }
-       }, created(){
-            let uri = 'http://localhost:4000/transactions';
-            this.axios.get(uri).then(response => {
-                this.transactions = response.data;
-            });
-      },
+    }, created(){
+        let uri = 'http://localhost:4000/transactions';
+        this.axios.get(uri).then(response => {
+            this.transactions = response.data;
+        });
+
+        uri = 'http://localhost:4000/currencies/initializeAll';
+        this.axios.post(uri).then(() => {
+            console.log("Currencies initialized!");
+        });
+
+    },
     methods: {
         reset(){//grab the id's of all transactions and delete them from DB, this leaves no items so no balanceAfter and no balance in bank
             for(var t of this.transactions){
@@ -133,11 +139,13 @@ export default {
             console.log("successfully reset account");
              location.reload();
 
+             // for(var c of this.currencies){
+             //    let uri = `http://localhost:4000/currencies/delete/`+c._id;
+             //    this.axios.delete(uri).then(response => {
+             //    this.currencies = response.data;
+             //    });
+            // }
         }
     }
 };
-
-
-
-
 </script>
