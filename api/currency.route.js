@@ -15,16 +15,14 @@ currencyRoutes.route('/initializeAll').post(function (req, res){
 
       // const fetch = require("node-fetch");
       // fetch('./currencies.json')
-      // .then((response) => {
-      //   return response.json();
-      // })
+      // .then((response) => response.json())
       // .then((data) => {
       //   for(var curr of data.currencies){
       //     arr.push(new Currency({name: curr.name, value: curr.value, date: date}));
       //   }
       // }).catch(() => {
       //   res.status(400).send("JSON parsing error.");
-      // });//retrieved from JSON file
+      // })//retrieved from JSON file
 
 
       // var data;
