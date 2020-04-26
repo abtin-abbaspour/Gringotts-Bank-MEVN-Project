@@ -21,7 +21,7 @@ import Viewer from './components/viewTransaction.vue';
 import Deposit from './components/deposit.vue';
 import Withdraw from './components/withdraw.vue';
 import ETransfer from './components/etransfer.vue';
-import Log from './components/Log.vue';
+import Log from './components/login.vue';
 
 const routes = [
   {
