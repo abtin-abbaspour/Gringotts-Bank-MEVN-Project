@@ -41,12 +41,12 @@
                      <article class="tile is-child notification is-second">
                         <p class="title">Gringotts</p>
                         <br>
-Gringotts banking is a leading Torontonian and North American financial institution. From personal, business and commerical banking, all the way to wealth managment and capital market investments. Our employees, finanical advisors and data scientists provide a diverse range of skills, financial products and services to more than a million clients across Toronto.                     </article>
+Gringotts banking is a leading Torontonian and North American financial institution. From personal, business and commerical banking, all the way to wealth managment and capital market investments. Our employees, finanical advisors and data scientists provide a diverse range of skills, financial products and services to more than a million clients across Toronto.              
+                   </article>
                      <article class="tile is-child notification is-warning">
                         <div class="content">
-                           <p class="title">Exchange Rates</p>
-                           <br>
-                           <p class="subtitle" v-for="curr in currencies" :key="curr._id">{{curr.name}} - $CAD = {{curr.value}}</p>
+                           <p class="title">In regards to COVID-19</p>
+We’re committed to maintaining a high level of banking access and support, providing expert advice and protecting our team and you. This includes keeping you informed of the actions we’re taking on behalf of our clients and employees.                           </p>
                         </div>
                      </article>
                   </div>
@@ -60,11 +60,36 @@ Gringotts banking is a leading Torontonian and North American financial institut
 </template>
 <script>
 export default {
+   
+    created() {
+        let uri = 'http://localhost:4000/transactions';
+        this.axios.get(uri).then(response => {
+            this.transactions = response.data;
+        });
 
+        uri = 'http://localhost:4000/currencies/';
+        this.axios.get(uri).then(response => {
+            this.currencies = response.data;
+        });
+    },
+    methods: {
+        phonenumber() {
+            this.$buefy.dialog.prompt({
+                message: `Please enter the phone number that is connected to your Gringotts account.`,
+                trapFocus: true,
+                onConfirm: (value) => this.$buefy.toast.open(`Thanks! check your phone number for a link to change your password.`)
+            })
+        },
+ 
+    }
 }
 </script>
 
 <style>
+
+.box{
+  width: 100px;
+}
 #image{
   width: 500px;
    margin-left: 70px;
@@ -75,4 +100,5 @@ export default {
    float:right;
    width: 700px;
 }
+
 </style>
