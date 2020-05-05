@@ -21,13 +21,19 @@ import Viewer from './components/viewTransaction.vue';
 import Deposit from './components/deposit.vue';
 import Withdraw from './components/withdraw.vue';
 import ETransfer from './components/etransfer.vue';
-import Log from './components/login.vue';
+import Login from './components/login.vue';
+import Register from './components/register.vue';
 
 const routes = [
   {
-    name: 'Log',
-    path: '/Log',
-    component: Log
+    name: 'register',
+    path: '/register',
+    component: Register
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: Login
   },
   {
       name: 'welcome',

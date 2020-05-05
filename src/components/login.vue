@@ -46,7 +46,7 @@ Gringotts banking is a leading Torontonian and North American financial institut
                      <article class="tile is-child notification is-warning">
                         <div class="content">
                            <p class="title">In regards to COVID-19</p>
-We’re committed to maintaining a high level of banking access and support, providing expert advice and protecting our team and you. This includes keeping you informed of the actions we’re taking on behalf of our clients and employees.                           </p>
+We’re committed to maintaining a high level of banking access and support, providing expert advice and protecting our team and you. This includes keeping you informed of the actions we’re taking on behalf of our clients and employees.                           
                         </div>
                      </article>
                   </div>
