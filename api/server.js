@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const PORT = 4000;
 const cors = require('cors');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); 
 const config = require('./DB.js');
 const transactionRoute = require('./transaction.route');
 const currencyRoute = require('./currency.route');
@@ -21,6 +21,9 @@ app.use(bodyParser.json());
 
 app.use('/transactions', transactionRoute);
 app.use('/currencies', currencyRoute);
+
+let users = require('./users');
+app.use('/users', users)
 
 
 app.listen(PORT, function(){
