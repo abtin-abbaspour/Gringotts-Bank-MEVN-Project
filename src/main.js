@@ -22,6 +22,7 @@ import Deposit from './components/deposit.vue';
 import Withdraw from './components/withdraw.vue';
 import ETransfer from './components/etransfer.vue';
 import Login from './components/login.vue';
+import Login1 from './components/login1.vue';
 import Register from './components/register.vue';
 
 const routes = [
@@ -34,6 +35,11 @@ const routes = [
     name: 'login',
     path: '/login',
     component: Login
+  },
+  {
+    name: 'login1',
+    path: '/login1',
+    component: Login1
   },
   {
       name: 'welcome',

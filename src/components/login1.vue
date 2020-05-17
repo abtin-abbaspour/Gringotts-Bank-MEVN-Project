@@ -3,7 +3,7 @@
 <div>
     <div class = "columns">
         <div class = "column">
-        <p class="title is-0.5" text-align = "middle">Register</p>
+        <p class="title is-0.5" text-align = "middle">Log In</p>
 
         <b-field label="Username">
             <b-input maxlength="10"></b-input>
@@ -19,7 +19,7 @@
             <b-input type="password" maxlength="16"></b-input>
         </b-field>
 
-        <button>Register</button>
+        <button>Log In</button>
         </div>
     </div>
 </div>
@@ -36,7 +36,7 @@ export default {
 
     methods: {
         register() {
-            axios.post('../register', {
+            axios.post('../login', {
                 email
             })
         }
