@@ -41,11 +41,7 @@ export default {
 
     methods: {
         register() {
-            this.axios.post('/users/register', this.user).then(() => {
-                this.$router.push({
-                    name: 'homePage'
-                });
-            });
+            this.axios.post('transaction/add', this.user);
             console.log(this.user.username);
         }
     }
