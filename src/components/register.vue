@@ -6,20 +6,20 @@
         <p class="title is-0.5" text-align = "middle">Register</p>
 
         <b-field label="Username">
-            <b-input maxlength="10"></b-input>
+            <b-input maxlength="10" v-model="user.username"></b-input>
         </b-field>
 
         <b-field label="Email">
             <b-input type="email"
-                maxlength="20">
+                maxlength="20" v-model="email">
             </b-input>
         </b-field>
 
         <b-field label="Password">
-            <b-input type="password" maxlength="16"></b-input>
+            <b-input type="password" maxlength="16" v-model="password"></b-input>
         </b-field>
 
-        <button>Register</button>
+        <b-button @click="register">Register</b-button>
         </div>
     </div>
 </div>
@@ -28,6 +28,11 @@
 export default {
     data() {
         return {
+            user: {
+                username: "",
+                email: "",
+                password: ""
+            },
             username: '',
             email: '',
             password: ''
@@ -36,9 +41,12 @@ export default {
 
     methods: {
         register() {
-            axios.post('../register', {
-                email
-            })
+            this.axios.post('/users/register', this.user).then(() => {
+                this.$router.push({
+                    name: 'homePage'
+                });
+            });
+            console.log(this.user.username);
         }
     }
 }
