@@ -7,6 +7,10 @@ const mongoose = require('mongoose');
 const config = require('./DB.js');
 const transactionRoute = require('./transaction.route');
 const currencyRoute = require('./currency.route');
+const usersRoute = require('./users.route');
+const expressValidator = require('express-validator');
+
+app.use(expressValidator);
 
 
 mongoose.Promise = global.Promise;
@@ -22,8 +26,7 @@ app.use(bodyParser.json());
 app.use('/transactions', transactionRoute);
 app.use('/currencies', currencyRoute);
 
-let users = require('./users');
-app.use('/users', users)
+app.use('/users', usersRoute)
 
 
 app.listen(PORT, function(){

@@ -11,12 +11,12 @@
 
         <b-field label="Email">
             <b-input type="email"
-                maxlength="20" v-model="email">
+                maxlength="20" v-model="user.email">
             </b-input>
         </b-field>
 
         <b-field label="Password">
-            <b-input type="password" maxlength="16" v-model="password"></b-input>
+            <b-input type="password" maxlength="16" v-model="user.password"></b-input>
         </b-field>
 
         <b-button @click="register">Register</b-button>
@@ -32,16 +32,14 @@ export default {
                 username: "",
                 email: "",
                 password: ""
-            },
-            username: '',
-            email: '',
-            password: ''
+            }
         }
     },
 
     methods: {
         register() {
-            this.axios.post('transaction/add', this.user);
+            let uri = 'http://localhost:4000/users/register';
+            this.axios.post(uri, this.user);
             console.log(this.user.username);
         }
     }
