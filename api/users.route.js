@@ -15,7 +15,7 @@ router.post('/register', function(req, res){
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
-    console.log('register process');
+    console.log(username);
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('email', 'Email is required').notEmpty();
     req.checkBody('email', 'Email is not valid').isEmail();
@@ -24,6 +24,7 @@ router.post('/register', function(req, res){
     let errors = req.validationErrors();
 
     if(errors){
+        console.log(req.validationErrors());
         res.render('register', {
             errors:errors
         });
