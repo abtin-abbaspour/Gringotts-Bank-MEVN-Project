@@ -38,6 +38,7 @@ export default {
         register() {
             let uri = 'http://localhost:4000/users/register';
             this.axios.post(uri);
+            console.log(this.username);
         }
     }
 }
