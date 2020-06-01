@@ -6,7 +6,7 @@
         <p class="title is-0.5" text-align = "middle">Register</p>
 
         <b-field label="Username">
-            <b-input maxlength="10" v-model="username"></b-input>
+            <b-input maxlength="10" v-model="username" name="user"></b-input>
         </b-field>
 
         <b-field label="Email">
@@ -28,9 +28,9 @@
 export default {
     data() {
         return {
-            username: "empty",
-            email: "empty",
-            password: "empty"
+            username: "abtin",
+            email: "abtin@mail.com",
+            password: "abcd123"
         }
     },
 
@@ -38,7 +38,7 @@ export default {
         register() {
             let uri = 'http://localhost:4000/users/register';
             this.axios.post(uri);
-            console.log(this.username);
+            console.log(username);
         }
     }
 }

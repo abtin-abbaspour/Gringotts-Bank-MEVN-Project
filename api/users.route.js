@@ -7,7 +7,7 @@ let User = require('./user');
 
 // Register Form
 router.get('/register', function(req, res){
-    res.render('register');
+    res.send('register');
 });
 
 // Register Process
@@ -15,7 +15,9 @@ router.post('/register', function(req, res){
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
-    console.log(username);
+
+    console.log(req.body);
+    
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('email', 'Email is required').notEmpty();
     req.checkBody('email', 'Email is not valid').isEmail();
@@ -25,7 +27,7 @@ router.post('/register', function(req, res){
 
     if(errors){
         console.log(req.validationErrors());
-        res.render('register', {
+        res.send({
             errors:errors
         });
     } else {
@@ -48,7 +50,7 @@ router.post('/register', function(req, res){
                         return;
                     } else {
                         req.flash('success', 'You are now registered and can log in');
-                        res.redirect('/user/login1')
+                        res.redirect('/user/login1');
                     }
                 });
             });

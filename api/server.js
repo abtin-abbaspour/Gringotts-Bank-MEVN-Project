@@ -18,7 +18,7 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 );
 
 app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
@@ -26,7 +26,6 @@ app.use('/transactions', transactionRoute);
 app.use('/currencies', currencyRoute);
 
 app.use('/users', usersRoute)
-
 
 app.listen(PORT, function(){
   console.log('Server is running on Port:',PORT);
