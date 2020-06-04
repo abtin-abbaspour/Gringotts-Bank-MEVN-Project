@@ -1,6 +1,7 @@
 <!-- Same as deposit page but money removed instead of added (still adding a transaction) -->
 <template>
-  <div>
+<div>
+  <div v-if = "loggedIn">
    <div class = "columns">
       <div class = "column">
          <p class="title is-0.5" text-align = "middle">Withdraw Balance</p>
@@ -65,6 +66,12 @@
       <p class="title">What is CDIC?</p>
       <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/" target="_blank"> CDIC.com </a></p>
     </article>
+  </div>
+  <div v-else>
+      <div id="homeBox">
+        Oops! Sorry you are not logged in to an account.<br>Please <router-link :to="{name: 'login1'}">Log In</router-link> or <router-link :to="{name: 'login1'}">Register</router-link> to view your <br>account details and information!
+      </div>
+    </div>
 </div>
 </template>
 <script>
@@ -78,7 +85,8 @@ export default {
                 date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()
             },
             currency: "$CAD",
-            currencies: []
+            currencies: [],
+            loggedIn: false
         }
     },
     created() {
@@ -137,7 +145,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #image{
   width: 500px;
    margin-left: 70px;
@@ -147,5 +155,26 @@ export default {
    margin-right:60px;
    float:right;
    width: 700px;
+}
+
+#homeBox{
+   margin: auto;
+   margin-top: 30px;
+   padding: 25px;
+   border-radius: 25px;
+   background-color: #9a841c;
+   font-size: 27px;
+   color: white;
+   width: 55%;
+   text-align: center;
+}
+
+a{
+  color: #482e06;
+}
+
+a:hover{
+  color: white;
+  font-weight: bold;
 }
 </style>

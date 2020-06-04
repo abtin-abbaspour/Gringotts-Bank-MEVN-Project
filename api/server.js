@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const expressValidator = require('express-validator');
-app.use(expressValidator())
+app.use(expressValidator());
 const bodyParser = require('body-parser');
 const PORT = 4000;
 const cors = require('cors');
@@ -18,14 +18,15 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 );
 
 app.use(cors());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
 app.use('/transactions', transactionRoute);
 app.use('/currencies', currencyRoute);
 
-app.use('/users', usersRoute)
+app.use('/users', usersRoute);
+
 
 app.listen(PORT, function(){
   console.log('Server is running on Port:',PORT);

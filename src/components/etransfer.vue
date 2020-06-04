@@ -1,75 +1,82 @@
 <!-- E-transfer page, same as deposit but input a saved name (eTransferTo) for who the e-Transfer is sent to -->
 <template>
 <div>
-  <div class = "columns">
-    <div class = "column">
-      <p class="title is-0.5" text-align = "middle">E-Transfer Balance</p>
-      <article class="tile is-child notification is-warning">
-                <div class="content">
-                  <p class="body">- Gringotts sends a notice to the email address you provide within 5 minutes.</p>
-                  <p class="body">- The transfer amount must be greater than $10.</p>
-                  <p class="body">- <strong>NOTE:</strong> Transaction may change depending on your currency choice.</p>
-                </div>
-              </article>
-      <br>
-      <b-field label="From Account:" type="is-second">
-        <b-select placeholder="Select Account.">
-          <option>Current Account</option>
-        </b-select>
-      </b-field>
-      <b-field type="is-second">
-        <b-input v-model = "transaction.eTransferTo"
-          placeholder = "Send Money To: "
-          class="box">            
-        </b-input>
-      </b-field>
-      <b-field label = "Currency:" type="is-second">
-        <b-select v-model = "currency" placeholder="Currency">
-          <option v-for="curr in currencies" :key="curr._id" :value = "curr.name">{{curr.name}}</option>
-        </b-select>
-      </b-field>
-      <b-field label = "Amount:" type="is-second">
-        <b-input v-model = "transaction.amount" type="number" step = "0.01" placeholder="$" class="box">            
-        </b-input>
-      </b-field>
-      <br>
-      <p class="control">
-        <button class="button is-second" @click.prevent="eTransfer()">ETransfer</button>
-      </p>
-    </div>
-    <div class = "column">
-      <div class="tile is-ancestor">
-        <div class="tile is-vertical is-10">
-          <div class="tile">
-            <div class="tile is-parent is-vertical">
-              <article class="tile is-child notification is-second">
-                <p class="title">E-Transfer</p><br>
-                Transfer your virtual balance to your contacts.
-              </article>
-              <article class="tile is-child notification is-first">
-                <p class="title">Questions?</p>
-                Contact our exchange rate expert <a @click.prevent='exchangeRate()'>Ben Merbaum.</a><br>
-              </article>
-              <article class="tile is-child notification is-warning">
-                <div class="content">
-                  <p class="title">Exchange Rates</p>
-                  <br>
-                  <p class="subtitle" v-for="curr in currencies" :key="curr._id">{{curr.name}} - $CAD = {{curr.value}} </p>
-                </div>
-              </article>
+  <div v-if="loggedIn">
+    <div class = "columns">
+      <div class = "column">
+        <p class="title is-0.5" text-align = "middle">E-Transfer Balance</p>
+        <article class="tile is-child notification is-warning">
+                  <div class="content">
+                    <p class="body">- Gringotts sends a notice to the email address you provide within 5 minutes.</p>
+                    <p class="body">- The transfer amount must be greater than $10.</p>
+                    <p class="body">- <strong>NOTE:</strong> Transaction may change depending on your currency choice.</p>
+                  </div>
+                </article>
+        <br>
+        <b-field label="From Account:" type="is-second">
+          <b-select placeholder="Select Account.">
+            <option>Current Account</option>
+          </b-select>
+        </b-field>
+        <b-field type="is-second">
+          <b-input v-model = "transaction.eTransferTo"
+            placeholder = "Send Money To: "
+            class="box">            
+          </b-input>
+        </b-field>
+        <b-field label = "Currency:" type="is-second">
+          <b-select v-model = "currency" placeholder="Currency">
+            <option v-for="curr in currencies" :key="curr._id" :value = "curr.name">{{curr.name}}</option>
+          </b-select>
+        </b-field>
+        <b-field label = "Amount:" type="is-second">
+          <b-input v-model = "transaction.amount" type="number" step = "0.01" placeholder="$" class="box">            
+          </b-input>
+        </b-field>
+        <br>
+        <p class="control">
+          <button class="button is-second" @click.prevent="eTransfer()">ETransfer</button>
+        </p>
+      </div>
+      <div class = "column">
+        <div class="tile is-ancestor">
+          <div class="tile is-vertical is-10">
+            <div class="tile">
+              <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-second">
+                  <p class="title">E-Transfer</p><br>
+                  Transfer your virtual balance to your contacts.
+                </article>
+                <article class="tile is-child notification is-first">
+                  <p class="title">Questions?</p>
+                  Contact our exchange rate expert <a @click.prevent='exchangeRate()'>Ben Merbaum.</a><br>
+                </article>
+                <article class="tile is-child notification is-warning">
+                  <div class="content">
+                    <p class="title">Exchange Rates</p>
+                    <br>
+                    <p class="subtitle" v-for="curr in currencies" :key="curr._id">{{curr.name}} - $CAD = {{curr.value}} </p>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <hr>
+      <img src="https://www.cdic.ca/wp-content/uploads/cdic-bank-door-decal-en.png" id = "image" alt="CDIC Logo cannot be displayed.">
+      <img src="https://www.laurentianbank.ca/sn_uploads/fck/SADC/SADC-web_1_EN.jpg" id = "image2" alt="CDIC Logo cannot be displayed.">
+      <article class="tile is-child notification is-first">
+        <p class="title">What is CDIC?</p>
+        <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/" target="_blank"> CDIC.com </a></p>
+      </article>
   </div>
-  <hr>
-    <img src="https://www.cdic.ca/wp-content/uploads/cdic-bank-door-decal-en.png" id = "image" alt="CDIC Logo cannot be displayed.">
-    <img src="https://www.laurentianbank.ca/sn_uploads/fck/SADC/SADC-web_1_EN.jpg" id = "image2" alt="CDIC Logo cannot be displayed.">
-    <article class="tile is-child notification is-first">
-      <p class="title">What is CDIC?</p>
-      <p class="body">CDIC is a federal crown corporation – a part of the government of Canada – created by Parliament in 1967 to protect money on deposit in the event a member institution becomes insolvent. CDIC protects eligible deposits to a maximum of $100,000 per depositor and per insured category. More information at <a href="https://www.cdic.ca/" target="_blank"> CDIC.com </a></p>
-    </article>
+  <div v-else>
+      <div id="homeBox">
+        Oops! Sorry you are not logged in to an account.<br>Please <router-link :to="{name: 'login1'}">Log In</router-link> or <router-link :to="{name: 'login1'}">Register</router-link> to view your <br>account details and information!
+      </div>
+    </div>
 </div>
 </template>
 
@@ -84,7 +91,8 @@ export default {
                 date: new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate()
             },
             currency: "$CAD",
-            currencies: []
+            currencies: [],
+            loggedIn: false
         }
     },
     created() {
@@ -143,7 +151,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .box{
   width: 310px;
 }
@@ -158,4 +166,26 @@ export default {
    float:right;
    width: 700px;
 }
+
+#homeBox{
+   margin: auto;
+   margin-top: 30px;
+   padding: 25px;
+   border-radius: 25px;
+   background-color: #9a841c;
+   font-size: 27px;
+   color: white;
+   width: 55%;
+   text-align: center;
+}
+
+a{
+  color: #482e06;
+}
+
+a:hover{
+  color: white;
+  font-weight: bold;
+}
+
 </style>

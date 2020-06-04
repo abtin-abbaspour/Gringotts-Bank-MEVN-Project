@@ -20,7 +20,7 @@
                     <b-input type="password" maxlength="16"></b-input>
                 </b-field>
 
-                <b-button class = "myButton" type="is-second" size = "is-large">Log In</b-button>
+                <b-button class = "myLoginButton" type="is-second" size = "is-large">Log In</b-button>
             </div>
         </div>
         <div id = "line"></div>
@@ -45,7 +45,7 @@
                     <b-input type="password" maxlength="16"></b-input>
                 </b-field>
 
-                <b-button class = "myButton" type="is-second" size = "is-large">Register</b-button>
+                <b-button class = "myLoginButton" type="is-second" size = "is-large">Register</b-button>
             </div>
         </div>
     </div>
@@ -97,7 +97,7 @@ export default {
    width: 700px;
 }
 
-.myButton{
+.myLoginButton{
     margin:10px 0px -20px 0px;
 }
 
