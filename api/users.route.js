@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 // Bring in the User Model
 let User = require('./user');
@@ -25,37 +26,57 @@ router.post('/register', function(req, res){
 
     let errors = req.validationErrors();
 
-    if(errors){
+    //if(errors){
+        console.log(1);
         console.log(req.validationErrors());
-        res.send({
-            errors:errors
-        });
-    } else {
+        console.log(2);
+    //    res.json({ errors:errors });
+    //} else {
         let newUser = new User({
             username:username,
             email:email,
             password:password
         });    
-        
-        bcrypt.getSalt(10, function(err, salt){
+        console.log(3);
+        bcrypt.genSalt(10, function(err, salt){
             bcrypt.hash(newUser.password, salt, function(err, hash){
-                if(error){
+                if(err){
                     console.log(err);
                 }
 
                 newUser.password = hash;
                 newUser.save(function(err){
-                    if(error) {
+                    if(err) {
                         console.log(err);
                         return;
                     } else {
                         req.flash('success', 'You are now registered and can log in');
-                        res.redirect('/user/login1');
+                        console.log(4);
+                        console.log(newUser);
+                        res.json('success');
+                        //res.redirect('/users/login');
                     }
                 });
             });
         });
-    }
+    //}
 });
 
+// Login Form
+router.get('/login', function(req, res){
+    res.redirect('/');
+});
+
+// Login Process
+router.post('/login', passport.authenticate('local'), function(req, res, next){
+    console.log(req.user);
+    });
+
+// Logout
+router.get('/logout', function(req, res){
+    req.logout();
+    req.flash('success', 'You are logged out');
+    res.redirect('/users/login');
+});
+ 
 module.exports = router;

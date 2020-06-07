@@ -9,6 +9,7 @@
                 </b-navbar-item>
             </template>
             <template slot="start">
+                <b-navbar-item tag="router-link" :to="{ path: '/login1' }">Log In</b-navbar-item>
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">Welcome</b-navbar-item>
                 <b-navbar-item tag="router-link" :to="{ path: '/homePage' }">Home</b-navbar-item>
                 <b-navbar-dropdown label="Actions" >
@@ -16,16 +17,13 @@
                     <b-navbar-item tag="router-link" :to="{ path: '/withdraw' }" class="is-first navbar">Withdraw</b-navbar-item>
                     <b-navbar-item tag="router-link" :to="{ path: '/eTransfer' }" class="is-first navbar">E-Transfer</b-navbar-item>
                 </b-navbar-dropdown>
-              <b-navbar-item tag="router-link" :to="{ path: '/login1' }">Log In</b-navbar-item>
             </template>
             <template slot="end">
+                
                 <b-navbar-item tag="div">
                     <div class="buttons">
-                        <a class="is-first button">
-                        <strong>Log Out</strong>
-                        </a>
                         <a class="is-first button" @click.prevent="reset()">
-                        <strong>Delete Account</strong>
+                        <strong>Reset Account</strong>
                         </a>
                     </div>
                 </b-navbar-item>
