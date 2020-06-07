@@ -22,8 +22,11 @@
                 
                 <b-navbar-item tag="div">
                     <div class="buttons">
-                        <a class="is-first button" @click.prevent="reset()">
-                        <strong>Reset Account</strong>
+                        <a class="is-first button" @click.prevent="logout">
+                        <strong>Log Out</strong>
+                        </a>
+                        <a class="is-first button" @click.prevent="deleteAccount">
+                        <strong>Delete Account</strong>
                         </a>
                     </div>
                 </b-navbar-item>
@@ -112,6 +115,7 @@ body {
 export default {
     data() {
         return {
+          //user store here***
             transactions: []
         }
     }, created(){
@@ -127,7 +131,7 @@ export default {
 
     },
     methods: {
-        reset(){//grab the id's of all transactions and delete them from DB, this leaves no items so no balanceAfter and no balance in bank
+        deleteAccount(){//grab the id's of all transactions and delete them from DB, this leaves no items so no balanceAfter and no balance in bank
             for(var t of this.transactions){
                 let uri = `http://localhost:4000/transactions/delete/`+t._id;
                 this.axios.delete(uri).then(response => {
@@ -147,6 +151,16 @@ export default {
              //    this.currencies = response.data;
              //    });
             // }
+        },
+        logout(){
+          let uri = `http://localhost:4000/users/logout`;
+          this.axios.get(uri).then(() => {
+                  console.log("FINISH");
+                  window.location.href = "http://localhost:8080/login";
+          })
+          .catch((error) => {
+                  console.log(1);
+          });
         }
     }
 };
