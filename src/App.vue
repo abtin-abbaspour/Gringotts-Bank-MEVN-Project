@@ -116,6 +116,7 @@ export default {
     data() {
         return {
           //user store here***
+            account: {},
             transactions: []
         }
     }, created(){
@@ -129,11 +130,31 @@ export default {
             console.log("Currencies initialized!");
         });
 
+        uri = 'http://localhost:4000/users/activeAccount';
+        this.axios.get(uri).then((response)=>{
+          this.account = response.data;
+          console.log("Current account: " + this.account);
+        })
+        .catch((error) => {
+            console.log(error);
+          });
+
     },
     methods: {
         deleteAccount(){//grab the id's of all transactions and delete them from DB, this leaves no items so no balanceAfter and no balance in bank
+              
+              let uri = `http://localhost:4000/users/delete/${this.account.id}`;
+              this.axios.delete(uri).then(()=>{
+                this.account = {};
+                console.log("Account deleted");
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+              location.reload();
+
             for(var t of this.transactions){
-                let uri = `http://localhost:4000/transactions/delete/`+t._id;
+                uri = `http://localhost:4000/transactions/delete/`+t._id;
                 this.axios.delete(uri).then(response => {
                 this.transactions = response.data;
                 });

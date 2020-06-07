@@ -92,7 +92,8 @@ export default {
             },
             currency: "$CAD",
             currencies: [],
-            loggedIn: false
+            loggedIn: false,
+            account: {}
         }
     },
     created() {
@@ -104,6 +105,15 @@ export default {
         uri = 'http://localhost:4000/currencies/';
         this.axios.get(uri).then(response => {
             this.currencies = response.data;
+        });
+
+        uri = 'http://localhost:4000/users/activeAccount';
+        this.axios.get(uri).then((response)=>{
+          this.account = response.data;
+            this.loggedIn = true;
+        })
+        .catch((error) => {
+            this.loggedIn = false;
         });
     },
     methods: {

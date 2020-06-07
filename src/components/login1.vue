@@ -1,47 +1,54 @@
 <!-- Same as deposit page but money removed instead of added (still adding a transaction) -->
 <template>
 <div>
-    <div class = "columns">
-        <div class = "column">
-            <div class = "myBox" style="background-color: #9a841c">
-                <p class="title is-2" text-align = "middle">Log In</p><br>
+    <div v-if="loggedIn===false">
+        <div class = "columns">
+            <div class = "column">
+                <div class = "myBox" style="background-color: #9a841c">
+                    <p class="title is-2" text-align = "middle">Log In</p><br>
 
-                <b-field label="Username" :message="usernameError">
-                    <b-input maxlength="10" v-model="username"></b-input>
-                </b-field>
+                    <b-field label="Username" :message="usernameError">
+                        <b-input maxlength="10" v-model="username"></b-input>
+                    </b-field>
 
-                <b-field label="Email" :message="emailError">
-                    <b-input type="email" maxlength="20" v-model="email">
-                    </b-input>
-                </b-field>
+                    <b-field label="Email" :message="emailError">
+                        <b-input type="email" maxlength="20" v-model="email">
+                        </b-input>
+                    </b-field>
 
-                <b-field label="Password" :message="passwordError">
-                    <b-input type="password" maxlength="16" v-model="password"></b-input>
-                </b-field>
+                    <b-field label="Password" :message="passwordError">
+                        <b-input type="password" maxlength="16" v-model="password"></b-input>
+                    </b-field>
 
-                <b-button class = "myLoginButton" type="is-second" size = "is-large" @click.prevent="login">Log In</b-button>
+                    <b-button class = "myLoginButton" type="is-second" size = "is-large" @click.prevent="login">Log In</b-button>
+                </div>
+            </div>
+            <div id = "line"></div>
+            <div class = "column"> 
+                <div class = "myBox" style="background-color: #9a841c">
+                    <p class="title is-2" text-align = "middle">Register</p><br>
+
+                    <b-field label="Username" :message="usernameError2">
+                        <b-input maxlength="10" v-model="username2"></b-input>
+                    </b-field>
+
+                    <b-field label="Email" :message="emailError2">
+                        <b-input type="email" maxlength="20" v-model="email2">
+                        </b-input>
+                    </b-field>
+
+                    <b-field label="Password" :message="passwordError2">
+                        <b-input type="password" maxlength="16" v-model="password2"></b-input>
+                    </b-field>
+
+                    <b-button class = "myLoginButton" type="is-second" size = "is-large" @click.prevent="register">Register</b-button>
+                </div>
             </div>
         </div>
-        <div id = "line"></div>
-        <div class = "column"> 
-            <div class = "myBox" style="background-color: #9a841c">
-                <p class="title is-2" text-align = "middle">Register</p><br>
-
-                <b-field label="Username" :message="usernameError2">
-                    <b-input maxlength="10" v-model="username2"></b-input>
-                </b-field>
-
-                <b-field label="Email" :message="emailError2">
-                    <b-input type="email" maxlength="20" v-model="email2">
-                    </b-input>
-                </b-field>
-
-                <b-field label="Password" :message="passwordError2">
-                    <b-input type="password" maxlength="16" v-model="password2"></b-input>
-                </b-field>
-
-                <b-button class = "myLoginButton" type="is-second" size = "is-large" @click.prevent="register">Register</b-button>
-            </div>
+    </div>
+    <div v-else>
+        <div id="homeBox">
+            Oops! Sorry you are already logged in!<br>Please <strong>Log Out</strong> first before logging in or <br>registering a new account!
         </div>
     </div>
 </div>
@@ -50,6 +57,8 @@
 export default {
     data() {
         return {
+            loggedIn: false,
+
             username: '',
             email: '',
             password: '',
@@ -67,7 +76,37 @@ export default {
             passwordError2: ""
         }
     },
+    created(){
 
+        // let uri = 'http://localhost:4000/users/deleteAll';
+        // this.axios.delete(uri).then(()=>{
+        //     console.log("Accounts all deleted");
+        // }).catch((error)=>{
+        //     console.log(error);
+        // });
+
+        let uri = 'http://localhost:4000/users/activeAccount';
+        this.axios.get(uri).then((response)=>{
+          this.loggedIn = true;
+          console.log(response);
+        })
+        .catch((error) => {
+            this.loggedIn = false;
+        });
+
+        // uri = 'http://localhost:4000/users/get';
+        // this.axios.get(uri).then((response)=>{
+        //     let b = response;
+        //     for(var t of b){
+        //         uri = `http://localhost:4000/users/delete/${t.id}`;
+        //         this.axios.delete(uri).then(()=>{
+        //             console.log("account deleted");
+        //         }).catch((error)=>{
+        //             console.log("error");
+        //         });
+        //     }
+        // });
+    },
     methods: {
         login() {
             let err = false;
@@ -139,7 +178,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 #line{
     margin:100px 0px;
@@ -174,5 +213,17 @@ input:valid{
 }
 input:invalid{
     color: red;
+}
+
+#homeBox{
+    margin: auto;
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 25px;
+    background-color: #9a841c;
+    font-size: 27px;
+    color: white;
+    width: 55%;
+    text-align: center;
 }
 </style>

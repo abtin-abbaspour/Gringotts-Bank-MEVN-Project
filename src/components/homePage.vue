@@ -4,6 +4,12 @@ the right consists of a list of transactions imported from the DB, similar to th
 	<div>
 		<div class = "columns" v-if="loggedIn">
 			<div class = "column">
+				<b-button type="is-second" size = "is-large" expanded>Account Info</b-button>
+				<b-button type="is-first" size = "is-large"expanded>Username: {{this.username}}</b-button>
+					<b-button type="is-first" size = "is-large"expanded>Email: {{this.email}}</b-button>
+					<b-button type="is-first" size = "is-large"expanded>Password: {{this.password}}</b-button>
+				<br>
+
 				<b-button type="is-second" size = "is-large" expanded>Current Balance</b-button>
 				<b-button type="is-first" size = "is-large" v-for="(transaction,index) in transactions.slice().reverse()" :key="transaction._id" v-if="index===0" expanded>${{transaction.balanceAfter}} CAD</b-button><!-- Taking the balanceAfter of the most recent transaction (that's current balance), if no transactions then no recent balanceAfter, then just $0.00 -->
 				<b-button type = "is-first" size = "is-large" v-if="transactions.length===0" expanded>$0.00 CAD</b-button><!-- if no balance, $0.00 displayed here instead-->
@@ -70,6 +76,7 @@ export default {
         return {
             transactions: [],
             balance: 0,
+            account: {},
             loggedIn: false
         }
     },
@@ -77,6 +84,15 @@ export default {
         let uri = 'http://localhost:4000/transactions';
         this.axios.get(uri).then(response => {
             this.transactions = response.data;
+        });
+
+        uri = 'http://localhost:4000/users/activeAccount';
+        this.axios.get(uri).then((response)=>{
+        	this.account = response.data;
+          	this.loggedIn = true;
+        })
+        .catch((error) => {
+            this.loggedIn = false;
         });
     },
     methods: {
