@@ -1,4 +1,7 @@
 const express = require('express');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 const app = express();
 const expressValidator = require('express-validator');
 app.use(expressValidator())
@@ -11,12 +14,12 @@ const config = require('./config/DB.js');
 const transactionRoute = require('./transaction.route');
 const currencyRoute = require('./currency.route');
 const usersRoute = require('./users.route');
-app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true
-}));
-const flash = require("connect-flash");
+
+app.set('view engine', 'jade');
+
+app.use(cookieParser('secret'));
+app.use(session({cookie: { maxAge: 60000 }}));
+app.use(flash());
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -27,8 +30,6 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
-app.use(flash());
 
 app.use('/transactions', transactionRoute);
 app.use('/currencies', currencyRoute);

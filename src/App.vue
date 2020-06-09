@@ -130,16 +130,6 @@ export default {
             console.log("Currencies initialized!");
         });
 
-        uri = 'http://localhost:4000/users/activeAccount';
-        this.axios.get(uri).then((response)=>{
-          this.account = response.data;
-          console.log("Current account: " + this.account[0].username);
-          console.log(this.account);
-        })
-        .catch((error) => {
-            console.log(error);
-          });
-
     },
     methods: {
         deleteAccount(){//grab the id's of all transactions and delete them from DB, this leaves no items so no balanceAfter and no balance in bank

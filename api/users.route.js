@@ -47,7 +47,7 @@ router.post('/register', function(req, res){
             username:username,
             email:email,
             password:password,
-            isActive:true
+            balance:100
         });    
         console.log(3);
         bcrypt.genSalt(10, function(err, salt){
@@ -80,26 +80,17 @@ router.get('/login', function(req, res){
 });
 
 // Login Process
-router.post('/login', passport.authenticate('local'), function(req, res, next){
-    console.log(req.user);
+router.post('/login', passport.authenticate('local', { failureFlash: true }), function(req, res, next){
+    console.log(req);
+    console.log(res);
+    console.log(next);
+    req.flash('success', 'You are logged in');
 });
 
 // Logout
 router.get('/logout', function(req, res){
     req.logout();
-    req.user.isActive = false;
     req.flash('success', 'You are logged out');
-    res.redirect('/users/login1');
-});
-
-router.get('/activeAccount', function(req, res){
-    User.find({"isActive": true}, function(err, result){
-        result.isActive = false;
-        if(err)
-            res.json(err);
-        else
-            res.json(result);
-    });
 });
 
 //we need a delete method

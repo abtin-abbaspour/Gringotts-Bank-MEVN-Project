@@ -10,8 +10,9 @@ module.exports = function(passport){
         console.log(2);
         let query = {username:username};
         User.findOne(query, function(err, user){
-            console.log(3);
-            if(err) throw err;
+            console.log(err);
+            console.log(user);
+            if(err) return done(err);
             if(!user) {
                 console.log("No user");
                 return done(null, false, {message: 'Incorrect Username'});

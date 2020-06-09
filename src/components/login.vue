@@ -3,6 +3,7 @@
 <div>
     <div class = "columns">
         <div class = "column">
+        <flash-message></flash-message>
         <p class="title is-0.5" text-align = "middle">Login</p>
 
         <b-field label="Username" :message="usernameError">
