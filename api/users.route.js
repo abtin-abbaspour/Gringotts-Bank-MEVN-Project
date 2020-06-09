@@ -81,9 +81,8 @@ router.get('/login', function(req, res){
 
 // Login Process
 router.post('/login', passport.authenticate('local'), function(req, res, next){
-    req.user.isActive = true;
     console.log(req.user);
-    });
+});
 
 // Logout
 router.get('/logout', function(req, res){

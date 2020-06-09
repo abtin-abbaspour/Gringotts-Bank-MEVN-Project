@@ -133,7 +133,8 @@ export default {
         uri = 'http://localhost:4000/users/activeAccount';
         this.axios.get(uri).then((response)=>{
           this.account = response.data;
-          console.log("Current account: " + this.account);
+          console.log("Current account: " + this.account[0].username);
+          console.log(this.account);
         })
         .catch((error) => {
             console.log(error);
@@ -180,7 +181,7 @@ export default {
                   window.location.href = "http://localhost:8080/login";
           })
           .catch((error) => {
-                  console.log(1);
+                  console.log(uri.req);
           });
         }
     }
