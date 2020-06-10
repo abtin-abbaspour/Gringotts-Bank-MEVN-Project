@@ -187,4 +187,8 @@ a:hover{
   color: white;
   font-weight: bold;
 }
+
+.box{
+  width: 150px;
+}
 </style>

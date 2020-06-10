@@ -117,11 +117,12 @@ export default {
             })
 		},
 		Email() {
-            this.$buefy.dialog.prompt({
-                message: `List your email address below and we will send you an email momentarily.`,
-                trapFocus: true,
-                onConfirm: (value) => this.$buefy.toast.open(`Thank you, you will receive an email soon.`)
-            })
+			window.open(`mailto:banking@gringotts.com?subject=Gringott's Banking&body=Please state your purpose for emailing us below, and be sure to include your contact information. Thank you!`);
+            // this.$buefy.dialog.prompt({
+            //     message: `List your email address below and we will send you an email momentarily.`,
+            //     trapFocus: true,
+            //     onConfirm: (value) => this.$buefy.toast.open(`Thank you, you will receive an email soon.`)
+            // })
         },
         technologicalExpert() {
             this.$buefy.dialog.prompt({

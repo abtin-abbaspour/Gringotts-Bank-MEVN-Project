@@ -158,7 +158,7 @@ export default {
 <style scoped>
 
 .box{
-  width: 100px;
+  width: 150px;
 }
 #image{
   width: 500px;
