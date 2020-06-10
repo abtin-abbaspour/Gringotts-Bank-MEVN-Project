@@ -22,11 +22,14 @@
                 
                 <b-navbar-item tag="div">
                     <div class="buttons">
-                        <a class="is-first button" @click.prevent="logout">
+                        <a class="is-first button" v-if="!activeUser" @click.prevent="login">
+                        <strong>Log In</strong>
+                        </a>
+                        <a class="is-first button" v-if="activeUser" @click.prevent="logout">
                         <strong>Log Out</strong>
                         </a>
                         <a class="is-first button" @click.prevent="deleteAccount">
-                        <strong>Delete Account</strong>
+                        <strong>Delete Accounts</strong>
                         </a>
                     </div>
                 </b-navbar-item>
@@ -117,7 +120,8 @@ export default {
         return {
           //user store here***
             account: {},
-            transactions: []
+            transactions: [],
+            activeUser: false
         }
     }, created(){
         let uri = 'http://localhost:4000/transactions';
@@ -183,6 +187,9 @@ export default {
           .catch((error) => {
                   console.log(uri.req);
           });
+        },
+        login(){
+            window.location.href = "http://localhost:8080/login";
         }
     }
 };

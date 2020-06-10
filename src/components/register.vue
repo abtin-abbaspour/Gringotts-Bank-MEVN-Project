@@ -57,6 +57,23 @@ export default {
                 this.passwordError = "Password is required";
                 err = true;
             }
+            
+            /** Error due to User being null
+            let User = require('../../api/user');  Somehow returns null
+            let query = {username:this.username};
+            console.log(User);
+            User.findOne(query, function(err, user){
+                console.log(err);
+                console.log(user);
+                if(err){
+                    console.log(err)
+                } else if (user) {
+                    this.usernameError = "Username already exists";
+                    err = true;
+                }
+            });
+            **/
+                
             console.log("Error: " + err);
             if (!err) {
                 let uri = 'http://localhost:4000/users/register';
@@ -66,7 +83,7 @@ export default {
                     window.location.href = "http://localhost:8080/login";
                 })
                 .catch((error) => {
-                    console.log(1);
+                    console.log(error);
                 });
             } else {
                 alert('Registration Failed');

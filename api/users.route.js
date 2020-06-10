@@ -36,42 +36,48 @@ router.post('/register', function(req, res){
     req.checkBody('password', 'password is required').notEmpty();
 
     let errors = req.validationErrors();
+    console.log(req.validationErrors());
 
-    //if(errors){
-        console.log(1);
-        console.log(req.validationErrors());
-        console.log(2);
-    //    res.json({ errors:errors });
-    //} else {
-        let newUser = new User({
-            username:username,
-            email:email,
-            password:password,
-            balance:100
-        });    
-        console.log(3);
-        bcrypt.genSalt(10, function(err, salt){
-            bcrypt.hash(newUser.password, salt, function(err, hash){
-                if(err){
-                    console.log(err);
-                }
-
-                newUser.password = hash;
-                newUser.save(function(err){
-                    if(err) {
+    let query = {username:username};
+    User.findOne(query, function(err, user){
+        console.log(err);
+        console.log(user);
+        if(err){
+            console.log(err)
+        } else if (user) {
+            console.log("Error: That username already exists");
+            res.status('505').send('Username already exists');
+        } else {
+            let newUser = new User({
+                username:username,
+                email:email,
+                password:password,
+                balance:100
+            });    
+            console.log(3);
+            bcrypt.genSalt(10, function(err, salt){
+                bcrypt.hash(newUser.password, salt, function(err, hash){
+                    if(err){
                         console.log(err);
-                        return;
-                    } else {
-                        req.flash('success', 'You are now registered and can log in');
-                        console.log(4);
-                        console.log(newUser);
-                        res.json('success');
-                        //res.redirect('/users/login');
                     }
+
+                    newUser.password = hash;
+                    newUser.save(function(err){
+                        if(err) {
+                            console.log(err);
+                            return;
+                        } else {
+                            req.flash('success', 'You are now registered and can log in');
+                            console.log(4);
+                            console.log(newUser);
+                            res.json('success');
+                            //res.redirect('/users/login');
+                        }
+                    });
                 });
             });
-        });
-    //}
+        }
+    });
 });
 
 // Login Form
