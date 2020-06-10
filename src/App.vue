@@ -133,7 +133,7 @@ export default {
     },
     methods: {
         deleteAccount(){//grab the id's of all transactions and delete them from DB, this leaves no items so no balanceAfter and no balance in bank
-              
+              /**
               let uri = `http://localhost:4000/users/delete/${this.account.id}`;
               this.axios.delete(uri).then(()=>{
                 this.account = {};
@@ -143,6 +143,16 @@ export default {
                 console.log(error);
               });
               location.reload();
+            **/
+            let uri = `http://localhost:4000/users/deleteAll`;
+              this.axios.delete(uri).then(()=>{
+                this.account = {};
+                console.log("All accounts have now been deleted");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+            //location.reload();
 
             for(var t of this.transactions){
                 uri = `http://localhost:4000/transactions/delete/`+t._id;
@@ -155,7 +165,7 @@ export default {
                 position: 'is-top'
             })
             console.log("successfully reset account");
-             location.reload();
+            location.reload();
 
              // for(var c of this.currencies){
              //    let uri = `http://localhost:4000/currencies/delete/`+c._id;

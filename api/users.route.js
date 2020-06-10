@@ -112,11 +112,7 @@ router.delete('/delete/:id', (req, res) => {
 }); 
 
 router.delete('/deleteAll', (req, res)=>{
-    db.users.drop();
-    if(err){
-        res.json(err);
-    }
-    //db.collection.drop();
+    User.collection.deleteMany({});
 });
 
 module.exports = router;
