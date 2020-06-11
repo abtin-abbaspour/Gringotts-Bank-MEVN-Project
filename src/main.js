@@ -1,10 +1,14 @@
 import Vue from 'vue';
 import VueFlashMessage from 'vue-flash-message';
+
+
 Vue.use(VueFlashMessage);
 import App from './App.vue';
 import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
 Vue.use(Buefy);
+
+Vue.prototype.$activeUser = false;
 
 
 import VueRouter from 'vue-router';

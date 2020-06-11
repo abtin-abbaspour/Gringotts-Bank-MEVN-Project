@@ -46,7 +46,7 @@ router.post('/register', function(req, res){
             console.log(err)
         } else if (user) {
             console.log("Error: That username already exists");
-            res.status('505').send('Username already exists');
+            res.json({errmsg:"Username already in use"});
         } else {
             let newUser = new User({
                 username:username,
@@ -82,15 +82,13 @@ router.post('/register', function(req, res){
 
 // Login Form
 router.get('/login', function(req, res){
-    res.redirect('/');
+    res.json("success");
 });
 
 // Login Process
-router.post('/login', passport.authenticate('local', { failureFlash: true }), function(req, res, next){
-    console.log(req);
-    console.log(res);
-    console.log(next);
-    req.flash('success', 'You are logged in');
+router.post('/login', passport.authenticate('local'), function(req, res, next){
+    console.log('Success: You are logged in');
+    res.json('success');
 });
 
 // Logout

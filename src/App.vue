@@ -22,13 +22,16 @@
                 
                 <b-navbar-item tag="div">
                     <div class="buttons">
-                        <a class="is-first button" v-if="!activeUser" @click.prevent="login">
+                        <a class="is-first button" v-if="!this.$activeUser" @click.prevent="login">
                         <strong>Log In</strong>
                         </a>
-                        <a class="is-first button" v-if="activeUser" @click.prevent="logout">
+                        <a class="is-first button" v-if="!this.$activeUser" @click.prevent="register">
+                        <strong>Register</strong>
+                        </a>
+                        <a class="is-first button" v-if="this.$activeUser" @click.prevent="logout">
                         <strong>Log Out</strong>
                         </a>
-                        <a class="is-first button" @click.prevent="deleteAccount">
+                        <a class="is-danger button" @click.prevent="deleteAccount">
                         <strong>Delete Accounts</strong>
                         </a>
                     </div>
@@ -121,7 +124,6 @@ export default {
           //user store here***
             account: {},
             transactions: [],
-            activeUser: false
         }
     }, created(){
         let uri = 'http://localhost:4000/transactions';
@@ -133,6 +135,8 @@ export default {
         this.axios.post(uri).then(() => {
             console.log("Currencies initialized!");
         });
+
+        console.log(this.$activeUser);
 
     },
     methods: {
@@ -190,6 +194,9 @@ export default {
         },
         login(){
             window.location.href = "http://localhost:8080/login";
+        },
+        register(){
+            window.location.href = "http://localhost:8080/register";
         }
     }
 };

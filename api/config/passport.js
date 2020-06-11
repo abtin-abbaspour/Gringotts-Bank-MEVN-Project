@@ -10,30 +10,31 @@ module.exports = function(passport){
         console.log(2);
         let query = {username:username};
         User.findOne(query, function(err, user){
-            console.log(err);
-            console.log(user);
+            console.log(3);
             if(err) return done(err);
             if(!user) {
-                console.log("No user");
-                return done(null, false, {message: 'Incorrect Username'});
+                console.log(4);
+                console.log("No User Found");
+                return done("incorrect user", false, {message: 'Incorrect Username'});
             }
-
+            console.log("User Found");
             // Match Password
             bcrypt.compare(password, user.password, function(err, isMatch){
-                if(err) throw err;
+                console.log(5);
+                if(err) return done(err);
                 if(isMatch) {
-                    console.log(4);
+                    console.log(6);
                     return done(null, user);
                 } else {
-                    console.log(isMatch);
-                    return done(null, false, {message: 'Incorrect Password'})
+                    console.log("Incorrect Password Found");
+                    return done("incorrect pass", false, {message: 'Incorrect Password'})
                 }
             });
         });
     }));
 
     passport.serializeUser(function(user, done) {
-        console.log(5);
+        console.log(7);
         done(null, user.id);
     });
 
