@@ -112,7 +112,6 @@ input:valid{
 input:invalid{
     color: red;
 }
-
 #homeBox{
     margin: auto;
     margin-top: 30px;
