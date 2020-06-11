@@ -86,7 +86,7 @@ export default {
             },
             currency: "$CAD",
             currencies: [],
-            loggedIn: false,
+            loggedIn: true,
             account: {}
         }
     },
@@ -101,14 +101,14 @@ export default {
             this.currencies = response.data;
         });
 
-        uri = 'http://localhost:4000/users/activeAccount';
-        this.axios.get(uri).then((response)=>{
-          this.account = response.data;
-            this.loggedIn = true;
-        })
-        .catch((error) => {
-            this.loggedIn = false;
-        });
+        // uri = 'http://localhost:4000/users/activeAccount';
+        // this.axios.get(uri).then((response)=>{
+        //   this.account = response.data;
+        //     this.loggedIn = true;
+        // })
+        // .catch((error) => {
+        //     this.loggedIn = false;
+        // });
     },
     methods: {
         technologicalExpert() {
@@ -186,5 +186,9 @@ a{
 a:hover{
   color: white;
   font-weight: bold;
+}
+
+.box{
+  width: 150px;
 }
 </style>

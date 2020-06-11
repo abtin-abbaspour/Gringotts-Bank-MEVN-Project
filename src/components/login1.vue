@@ -160,7 +160,7 @@ export default {
                 this.axios.post(uri, {"username":this.username2, "email":this.email2, "password":this.password2})
                 .then(() => {
                     console.log("FINISH");
-                    window.location.href = "http://localhost:8080/login";
+                    window.location.href = "http://localhost:8080/homePage";
                 })
                 .catch((error) => {
                     console.log(1);
