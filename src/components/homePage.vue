@@ -2,7 +2,7 @@
 the right consists of a list of transactions imported from the DB, similar to the post list -->
 <template>
 	<div>
-		<div class = "columns" v-if="loggedIn">
+		<div class = "columns" v-if="this.$activeUser">
 			<div class = "column">
 				<!-- <b-button type="is-second" size = "is-large" expanded>Account Info</b-button>
 				<b-button type="is-first" size = "is-large"expanded>Username: {{this.account.username}}</b-button>

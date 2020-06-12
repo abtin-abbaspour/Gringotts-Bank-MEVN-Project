@@ -1,7 +1,7 @@
 <!-- E-transfer page, same as deposit but input a saved name (eTransferTo) for who the e-Transfer is sent to -->
 <template>
 <div>
-  <div v-if="loggedIn">
+  <div v-if="this.$activeUser">
     <div class = "columns">
       <div class = "column">
         <p class="title is-0.5" text-align = "middle">E-Transfer Balance</p>

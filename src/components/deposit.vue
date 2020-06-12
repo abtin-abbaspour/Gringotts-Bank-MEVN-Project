@@ -1,7 +1,7 @@
 <!-- Simple deposit page, users can deposit money of any currency. Once they do so, this is added to the DB as a transaction. -->
 <template>
 <div>
-  <div v-if="loggedIn">
+  <div v-if="this.$activeUser">
     <div class = "columns">
       <div class = "column">
         <p class="title is-0.5" text-align = "middle">Deposit Balance</p>

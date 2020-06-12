@@ -1,7 +1,7 @@
 <!-- Same as deposit page but money removed instead of added (still adding a transaction) -->
 <template>
 <div>
-  <div v-if = "loggedIn">
+  <div v-if="this.$activeUser">
    <div class = "columns">
       <div class = "column">
          <p class="title is-0.5" text-align = "middle">Withdraw Balance</p>

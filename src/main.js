@@ -8,7 +8,7 @@ import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
 Vue.use(Buefy);
 
-Vue.prototype.$activeUser = false;
+Vue.prototype.$activeUser = true;
 
 
 import VueRouter from 'vue-router';
