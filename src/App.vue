@@ -111,8 +111,10 @@ $navbar-item-img-max-height: 3rem !important;
 
 body {
   background-color: #f7e79c;
-  background-size: 100%;
-  height: 1200px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 </style>
