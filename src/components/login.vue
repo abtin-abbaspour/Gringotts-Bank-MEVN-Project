@@ -62,7 +62,7 @@ export default {
                     } else {
                         this.$activeUser = true;
                         console.log(this.$activeUser);
-                        //window.location.href = "http://localhost:8080/homePage";
+                        window.location.href = "http://localhost:8080/homePage";
                     }
                 })
                 .catch((error) => {
